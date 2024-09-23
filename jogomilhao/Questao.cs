@@ -1,5 +1,6 @@
 namespace jogomilhao
 {
+
   public class Questao
   {
     public string questaoi { get; set; }
@@ -20,6 +21,15 @@ namespace jogomilhao
     private Button buttonrep4;
     private Button buttonrep5;
 
+    public void ConfiguraDesenho(Label labelPergunta,Button buttonrep1,Button buttonrep2,Button buttonrep3,Button buttonrep4,Button buttonrep5);
+    {
+      lab = labelPergunta;
+      buttonrep1 = buttonrep1;
+      buttonrep2 = buttonrep2;
+      buttonrep3 = buttonrep3;
+      buttonrep4 = buttonrep4;
+      buttonrep5 = buttonrep5;
+    } 
     public void desenhar()
     {
       labelPergunta.Text = questaoi;
@@ -45,7 +55,7 @@ namespace jogomilhao
     }
 
 
-    public bool verificaresposdta(int RespostaC)
+    public bool verificaresposta(int RespostaC)
     {
       if (RespostaC == RespostaR)
       {
