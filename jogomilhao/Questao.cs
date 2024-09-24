@@ -21,16 +21,16 @@ namespace jogomilhao
     private Button buttonrep4;
     private Button buttonrep5;
 
-    public void ConfiguraDesenho(Label labelPergunta,Button buttonrep1,Button buttonrep2,Button buttonrep3,Button buttonrep4,Button buttonrep5);
+    public void ConfiguraDesenho(Label labelPergunta, Button buttonrep1, Button buttonrep2, Button buttonrep3, Button buttonrep4, Button buttonrep5)
     {
-      lab = labelPergunta;
-      buttonrep1 = buttonrep1;
-      buttonrep2 = buttonrep2;
-      buttonrep3 = buttonrep3;
-      buttonrep4 = buttonrep4;
-      buttonrep5 = buttonrep5;
-    } 
-    public void desenhar()
+      this.labelPergunta = labelPergunta;
+      this.buttonrep1 = buttonrep1;
+      this.buttonrep2 = buttonrep2;
+      this.buttonrep3 = buttonrep3;
+      this.buttonrep4 = buttonrep4;
+      this.buttonrep5 = buttonrep5;
+    }
+    public void Desenhar()
     {
       labelPergunta.Text = questaoi;
       buttonrep1.Text = resposta1;
@@ -42,9 +42,9 @@ namespace jogomilhao
 
 
 
-    public  Questao ()
-    {}
-    public Questao (Label per, Button bot1, Button bot2, Button bot3, Button bot4, Button bot5)
+    public Questao()
+    { }
+    public Questao(Label per, Button bot1, Button bot2, Button bot3, Button bot4, Button bot5)
     {
       labelPergunta = per;
       buttonrep1 = bot1;
@@ -55,7 +55,7 @@ namespace jogomilhao
     }
 
 
-    public bool verificaresposta(int RespostaC)
+    public bool EstaCorreto(int RespostaC)
     {
       if (RespostaC == RespostaR)
       {
@@ -68,8 +68,8 @@ namespace jogomilhao
         return false;
       }
     }
-     
-    private Button QualBot (int RespostaC)
+
+    private Button QualBot(int RespostaC)
     {
       if (RespostaC == 1)
         return buttonrep1;
@@ -81,7 +81,7 @@ namespace jogomilhao
         return buttonrep4;
       else if (RespostaC == 5)
         return buttonrep5;
-        else
+      else
         return null;
     }
   }

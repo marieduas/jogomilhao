@@ -3,96 +3,104 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="jogomilhao.MainPage">
 
-   
-   <Grid>
-     
-        <Grid.RowDefinitions>
-          <RowDefinition Height="300"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>                 
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-            <Image 
-                  Source="pontodeinterogacao.webp"
-                  Grid.ColumnSpan="3"  
-                  Grid.RowSpan="0"
-                  Aspect="AspectFill"/>
-     
-            <Label 
-                   Text="Jogo do milhão"
-                   Grid.ColumnSpan="3"
-                   FontSize="20"
-                   HorizontalTextAlignment="Center"
-                   Grid.Row="1" />
+       <Grid>
 
-            <Button
-                   Grid.ColumnSpan="3"
-                   Grid.Row="2"
-                   Margin="0,0,0,5"
-                   BackgroundColor="#85cdf9"
-                   Text="A)" />        
+              <Grid.RowDefinitions>
+                     <RowDefinition Height="300"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
 
-            <Button
-                   Grid.ColumnSpan="3"
-                   Grid.Row="3"
-                   Margin="0,0,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="B)"/>
+              <Image
+                     Source="pontodeinterogacao.webp"
+                     Grid.ColumnSpan="3"
+                     Grid.RowSpan="0"
+                     Aspect="AspectFill"/>
 
-            <Button
-                   Grid.ColumnSpan="3"
-                   Grid.Row="4"
-                   Margin="0,0,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="C)"/>
+              <Label x:Name ="labelPotuacao"
+                     Text="Pontuação"
+                     Grid.ColumnSpan="2"
+                     FontSize="20"
+                     HorizontalTextAlignment="Center"
+                     Grid.Row="1"/>
 
-            <Button
-                   Grid.ColumnSpan="3"
-                   Grid.Row="5"
-                   Margin="0,0,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="D)"/>
+              <Label x:Name ="labelnivel"
+                     Text="Nivel"
+                     Grid.Column ="3"
+                     FontSize="20"
+                     HorizontalTextAlignment="Center"
+                     Grid.Row="2"/>
 
-            <Button
-                   Grid.ColumnSpan="3"
-                   Grid.Row="6"
-                   Margin="0,0,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="E)"/>
+              <Button x:Name ="buttonrep1"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="3"
+                     Margin="0,0,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="A)"/>
 
-            <Button
-                   Grid.Column="0"
-                   Grid.Row="7"
-                   Margin="5,2,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="E)"/>
-            
-             <Button
-                   Grid.Column="1"
-                   Grid.Row="7"
-                   Margin="5,2,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="E)"/>
+              <Button x:Name ="buttonrep2"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="4"
+                     Margin="0,0,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="B)"/>
 
-             <Button
-                   Grid.Column="2"
-                   Grid.Row="7"
-                   Margin="5,2,0,5"
-                   BackgroundColor="#85cdf9" 
-                   Text="E)"/>
-       
-        
-        </Grid>
+              <Button x:Name ="buttonrep3"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="5"
+                     Margin="0,0,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="C)"/>
+
+              <Button x:Name ="buttonrep4"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="6"
+                     Margin="0,0,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="D)"/>
+
+              <Button x:Name ="buttonrep5"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="7"
+                     Margin="0,0,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="E)"/>
+
+              <Button
+                     Grid.Column="0"
+                     Grid.Row="8"
+                     Margin="5,2,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="E)"/>
+
+              <Button
+                     Grid.Column="1"
+                     Grid.Row="8"
+                     Margin="5,2,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="E)"/>
+
+              <Button
+                     Grid.Column="2"
+                     Grid.Row="8"
+                     Margin="5,2,0,5"
+                     BackgroundColor="#85cdf9"
+                     Text="E)"/>
+
+
+       </Grid>
 
 </ContentPage>
 

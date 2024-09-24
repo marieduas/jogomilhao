@@ -1,6 +1,4 @@
-﻿using Modelos;
-
-namespace jogomilhao;
+﻿namespace jogomilhao;
 
 public partial class MainPage : ContentPage
 {
@@ -8,8 +6,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-    gerenciador = new Gerenciador(labelPergunta,buttonrep1,buttonrep2,buttonrep3,buttonrep4,buttonrep5);
-    gerenciador.ProximaQuestao();
+    gerenciador = new Gerenciador(labelPotuacao,labelnivel, buttonrep1, buttonrep2, buttonrep3, buttonrep4, buttonrep5);
 	}
 
   private void OnBtnResposta01Clicked(object sender, EventArgs e)
