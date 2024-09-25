@@ -8,11 +8,11 @@ public class Gerenciador
     Questao QuestaoAtual;
     Label labelPontuacao;
     Label labelNivel;
-    public Gerenciador(Label labelPotuacao,Label labelnivel, Button buttonrep1, Button buttonrep2, Button buttonrep3, Button buttonrep4, Button buttonrep5, Label labelPontuacao, Label labelNivel)
+    public Gerenciador(Label labelPontuacao,Label labelPergunta,Label labelnivel, Button buttonrep1, Button buttonrep2, Button buttonrep3, Button buttonrep4, Button buttonrep5)
     {
         this.labelPontuacao = labelPontuacao;
         this.labelNivel = labelNivel;
-        CriarPergunta(labelPotuacao,labelnivel, buttonrep1, buttonrep2, buttonrep3, buttonrep4, buttonrep5);
+        CriarPergunta(labelPergunta, buttonrep1, buttonrep2, buttonrep3, buttonrep4, buttonrep5);
     }
 
     void CriarPergunta(Label per, Button buttonrep1, Button bot2, Button bot3, Button bot4, Button bot5)
