@@ -32,6 +32,7 @@ namespace jogomilhao
     }
     public void Desenhar()
     {
+      
       labelPergunta.Text = questaoi;
       buttonrep1.Text = resposta1;
       buttonrep2.Text = resposta2;
@@ -54,21 +55,23 @@ namespace jogomilhao
       buttonrep5 = bot5;
     }
 
-
-    public bool EstaCorreto(int RespostaC)
+    public bool VerificaResposta(int RR)
     {
-      if (RespostaC == RespostaR)
-      {
-        var bot = QualBot(RespostaC);
-        bot.BackgroundColor = Colors.Green;
-        return true;
-      }
-      else
-      {
-        return false;
-      }
-    }
-
+        if (RespostaC == RR)
+        {
+            var botao = QualBot (RR);
+            botao.BackgroundColor = Colors.Green;
+            return true;
+        }
+        else
+        {
+            var botaocorreto = QualBot (RespostaC);
+            var botaoincorreto = QualBot (RR);
+            botaocorreto.BackgroundColor = Colors.Yellow;
+            botaoincorreto.BackgroundColor = Colors.Red;
+            return false;
+        }
+    } 
     private Button QualBot(int RespostaC)
     {
       if (RespostaC == 1)
