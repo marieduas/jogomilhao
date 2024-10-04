@@ -1,91 +1,107 @@
-namespace jogomilhao
+namespace jogomilhao;
+
+public class Questao:IEquatable<Questao>
+{
+public Questao()
 {
 
-  public class Questao
-  {
-    public string questaoi { get; set; }
-
-    //---------------------------------------------------------------
+}
+    public bool Equals(Questao questao)
+    {
+        return this.Nivel == questao.Nivel && this.pergunta==questao.pergunta;
+    }
+    public string pergunta { get; set; }
     public string resposta1 { get; set; }
     public string resposta2 { get; set; }
     public string resposta3 { get; set; }
     public string resposta4 { get; set; }
     public string resposta5 { get; set; }
-    public int NivelDaPergunta;
-    public int RespostaR;
-    public int RespostaC;
+    public int nivelpergunta { get; set; }
+    public int respostacorreta { get; set;}
+    public int Nivel;
+    
+    public void desenhar()
+    {
+        labelPergunta.Text = pergunta;
+        btResposta01.Text = resposta1;
+        btResposta02.Text = resposta2;
+        btResposta03.Text = resposta3;
+        btResposta04.Text = resposta4;
+        btResposta05.Text = resposta5;
+
+        btResposta01.BackgroundColor = Colors.DarkBlue;
+        btResposta01.TextColor       = Colors.White;
+        btResposta02.BackgroundColor = Colors.DarkBlue;
+        btResposta02.TextColor       = Colors.White;
+        btResposta03.BackgroundColor = Colors.DarkBlue;
+        btResposta03.TextColor       = Colors.White;
+        btResposta04.BackgroundColor = Colors.DarkBlue;
+        btResposta04.TextColor       = Colors.White;
+        btResposta05.BackgroundColor = Colors.DarkBlue;
+        btResposta05.TextColor       = Colors.White;
+
+        btResposta01.IsVisible = true;
+        btResposta02.IsVisible = true;
+        btResposta03.IsVisible = true;
+        btResposta04.IsVisible = true;
+        btResposta05.IsVisible = true;
+    }
+
     private Label labelPergunta;
-    private Button buttonrep1;
-    private Button buttonrep2;
-    private Button buttonrep3;
-    private Button buttonrep4;
-    private Button buttonrep5;
+    private Button btResposta01;
+    private Button btResposta02;
+    private Button btResposta03;
+    private Button btResposta04;
+    private Button btResposta05;
 
-    public void ConfiguraDesenho(Label labelPergunta, Button buttonrep1, Button buttonrep2, Button buttonrep3, Button buttonrep4, Button buttonrep5)
+    public Questao(Label lp, Button bt01, Button bt02, Button bt03, Button bt04, Button bt05)
     {
-      this.labelPergunta = labelPergunta;
-      this.buttonrep1 = buttonrep1;
-      this.buttonrep2 = buttonrep2;
-      this.buttonrep3 = buttonrep3;
-      this.buttonrep4 = buttonrep4;
-      this.buttonrep5 = buttonrep5;
+        labelPergunta = lp;
+        btResposta01 = bt01;
+        btResposta02 = bt02;
+        btResposta03 = bt03;
+        btResposta04 = bt04;
+        btResposta05 = bt05;
     }
-    public void Desenhar()
+    public void ConfigurarEstruturaDesenho(Label lp, Button bt01, Button bt02, Button bt03, Button bt04, Button bt05)
     {
-      
-      labelPergunta.Text = questaoi;
-      buttonrep1.Text = resposta1;
-      buttonrep2.Text = resposta2;
-      buttonrep3.Text = resposta3;
-      buttonrep4.Text = resposta4;
-      buttonrep5.Text = resposta5;
+        labelPergunta = lp;
+        btResposta01 = bt01;
+        btResposta02 = bt02;
+        btResposta03 = bt03;
+        btResposta04 = bt04;
+        btResposta05 = bt05;
     }
-
-
-
-    public Questao()
-    { }
-    public Questao(Label per, Button bot1, Button bot2, Button bot3, Button bot4, Button bot5)
-    {
-      labelPergunta = per;
-      buttonrep1 = bot1;
-      buttonrep2 = bot2;
-      buttonrep3 = bot3;
-      buttonrep4 = bot4;
-      buttonrep5 = bot5;
-    }
-
     public bool VerificaResposta(int RR)
     {
-        if (RespostaC == RR)
+        if (respostacorreta == RR)
         {
-            var botao = QualBot (RR);
+            var botao = QualBotao (RR);
             botao.BackgroundColor = Colors.Green;
             return true;
         }
         else
         {
-            var botaocorreto = QualBot (RespostaC);
-            var botaoincorreto = QualBot (RR);
+            var botaocorreto = QualBotao (respostacorreta);
+            var botaoincorreto = QualBotao (RR);
             botaocorreto.BackgroundColor = Colors.Yellow;
             botaoincorreto.BackgroundColor = Colors.Red;
             return false;
         }
     } 
-    private Button QualBot(int RespostaC)
+    private Button QualBotao (int RR)
     {
-      if (RespostaC == 1)
-        return buttonrep1;
-      else if (RespostaC == 2)
-        return buttonrep2;
-      else if (RespostaC == 3)
-        return buttonrep3;
-      else if (RespostaC == 4)
-        return buttonrep4;
-      else if (RespostaC == 5)
-        return buttonrep5;
-      else
+        if (RR == 1)
+        return btResposta01;
+        else if (RR == 2)
+        return btResposta02;
+        else if (RR == 3)
+        return btResposta03;
+        else if (RR == 4)
+        return btResposta04;
+        else if (RR == 5)
+        return btResposta05;
+        else
         return null;
     }
-  }
 }

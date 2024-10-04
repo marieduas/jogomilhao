@@ -1,1201 +1,1290 @@
-namespace jogomilhao;
+using jogomilhao;
 
 public class Gerenciador
 {
-    List<Questao> ListaQuestao = new List<Questao>();
-    List<int> ListasQuestaoRespondidas = new List<int>();
-
-    Questao QuestaoCorrente;
     Label labelPontuacao;
     Label labelNivel;
-    public Gerenciador(Label labelPontuacao,Label labelPergunta,Label labelnivel, Button buttonrep1, Button buttonrep2, Button buttonrep3, Button buttonrep4, Button buttonrep5)
+    List<Questao> ListaTodasQuestoes = new List<Questao>();
+    List<Questao> ListaTodasQuestoesRespondidas = new List<Questao>();
+    Questao QuestaoCorrente;
+    public Gerenciador(Label LabelPerg, Button btResposta01, Button btResposta02, Button btResposta03, Button btResposta04, Button btResposta05, Label labelPontuacao, Label labelNivel)
     {
+        CriarPerguntas(LabelPerg, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
         this.labelPontuacao = labelPontuacao;
         this.labelNivel = labelNivel;
-        CriarPergunta(labelPergunta, buttonrep1, buttonrep2, buttonrep3, buttonrep4, buttonrep5);
     }
-
-    void CriarPergunta(Label per, Button buttonrep1, Button bot2, Button bot3, Button bot4, Button bot5)
+    public Questao GetQuestaoCorrente()
     {
-        //nivel 1
-        var Q1 = new Questao();
-        Q1.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q1.questaoi = "Quanto é 40+30?";
-        Q1.resposta1 = "1";
-        Q1.resposta2 = "16";
-        Q1.resposta3 = "60";
-        Q1.resposta5 = "70";
-        Q1.RespostaC = 5;
-        ListaQuestao.Add(Q1);
+        return QuestaoCorrente;
+    }
+    void CriarPerguntas(Label labelPergunta, Button btResposta01, Button btResposta02, Button btResposta03, Button btResposta04, Button btResposta05)
+    {
+        var Questao01 = new Questao();
+        Questao01.Nivel = 1;
+        Questao01.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao01.pergunta = "Quem descobriu o Brasil?";
+        Questao01.resposta1 = "Neymar";
+        Questao01.resposta2 = "Pedro Álvares Cabral";
+        Questao01.resposta3 = "Napoleão Bonaparte";
+        Questao01.resposta4 = "Jair Bolsonaro";
+        Questao01.resposta5 = "Thiago Macedo";
+        Questao01.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao01);
+
+        var Questao02 = new Questao();
+        Questao02.Nivel = 1;
+        Questao02.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao02.pergunta = "Qual é a montanha mais alta do mundo?";
+        Questao02.resposta1 = "Monte Kilimanjaro";
+        Questao02.resposta2 = "Aconcágua";
+        Questao02.resposta3 = "Monte Everest";
+        Questao02.resposta4 = "K2";
+        Questao02.resposta5 = "Monte McKinley";
+        Questao02.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao02);
+
+        var Questao03 = new Questao();
+        Questao03.Nivel = 1;
+        Questao03.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao03.pergunta = " Quem é conhecido como o Pai da Psicanálise?";
+        Questao03.resposta1 = "Sigmund Freud";
+        Questao03.resposta2 = "Ivan Pavlov";
+        Questao03.resposta3 = "Erik Erikson";
+        Questao03.resposta4 = "Carl Jung";
+        Questao03.resposta5 = "Alfred Adler";
+        Questao03.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao03);
+
+        var Questao04 = new Questao();
+        Questao04.Nivel = 1;
+        Questao04.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao04.pergunta = "Quem pintou a Mona Lisa?";
+        Questao04.resposta1 = "Vincent van Gogh";
+        Questao04.resposta2 = "Pablo Picasso";
+        Questao04.resposta3 = "Leonardo da Vinci";
+        Questao04.resposta4 = "Claude Monet";
+        Questao04.resposta5 = "Salvador Dalí";
+        Questao04.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao04);
+
+        var Questao05 = new Questao();
+        Questao05.Nivel = 1;
+        Questao05.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao05.pergunta = "Qual é a fórmula química da água?";
+        Questao05.resposta1 = "H2O";
+        Questao05.resposta2 = "CO2";
+        Questao05.resposta3 = "O2";
+        Questao05.resposta4 = "H2O2";
+        Questao05.resposta5 = "CH4";
+        Questao05.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao05);
+
+        var Questao06 = new Questao();
+        Questao06.Nivel = 1;
+        Questao06.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao06.pergunta = "Qual é o continente onde está localizado o Egito?";
+        Questao06.resposta1 = "Ásia";
+        Questao06.resposta2 = "América";
+        Questao06.resposta3 = "África";
+        Questao06.resposta4 = "Europa";
+        Questao06.resposta5 = "Oceania";
+        Questao06.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao06);
+
+        var Questao07 = new Questao();
+        Questao07.Nivel = 1;
+        Questao07.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao07.pergunta = "Qual é a moeda do Japão?";
+        Questao07.resposta1 = "Yuan";
+        Questao07.resposta2 = "Won";
+        Questao07.resposta3 = "Dólar";
+        Questao07.resposta4 = "Iene";
+        Questao07.resposta5 = "Rupia";
+        Questao07.respostacorreta = 4;
+        ListaTodasQuestoes.Add(Questao07);
+
+        var Questao08 = new Questao();
+        Questao08.Nivel = 1;
+        Questao08.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao08.pergunta = "Quem é conhecido como o 'Rei do Pop'?";
+        Questao08.resposta1 = "Elvis Presley";
+        Questao08.resposta2 = "Michael Jackson";
+        Questao08.resposta3 = "Prince";
+        Questao08.resposta4 = "David Bowie";
+        Questao08.resposta5 = "Freddie Mercury";
+        Questao08.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao08);
+
+        var Questao09 = new Questao();
+        Questao09.Nivel = 1;
+        Questao09.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao09.pergunta = "Qual é o órgão responsável por bombear o sangue no corpo humano?";
+        Questao09.resposta1 = "Fígado";
+        Questao09.resposta2 = "Coração";
+        Questao09.resposta3 = "Pulmão";
+        Questao09.resposta4 = "Rim";
+        Questao09.resposta5 = "Estômago";
+        Questao09.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao09);
+
+        var Questao10 = new Questao();
+        Questao10.Nivel = 1;
+        Questao10.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao10.pergunta = "Qual é a língua oficial do Brasil?";
+        Questao10.resposta1 = "Espanhol";
+        Questao10.resposta2 = "Inglês";
+        Questao10.resposta3 = "Francês";
+        Questao10.resposta4 = "Português";
+        Questao10.resposta5 = "Italiano";
+        Questao10.respostacorreta = 4;
+        ListaTodasQuestoes.Add(Questao10);
+
+        var Questao11 = new Questao();
+        Questao11.Nivel = 2;
+        Questao11.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao11.pergunta = "Qual é o nome do famoso cientista que formulou a teoria da relatividade?";
+        Questao11.resposta1 = "Isaac Newton";
+        Questao11.resposta2 = "Albert Einstein";
+        Questao11.resposta3 = "Galileu Galilei";
+        Questao11.resposta4 = "Nikola Tesla";
+        Questao11.resposta5 = "Stephen Hawking";
+        Questao11.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao11);
+
+        var Questao12 = new Questao();
+        Questao12.Nivel = 2;
+        Questao12.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao12.pergunta = "Qual é o maior oceano do mundo?";
+        Questao12.resposta1 = "Oceano Atlântico";
+        Questao12.resposta2 = "Oceano Índico";
+        Questao12.resposta3 = "Oceano Pacífico";
+        Questao12.resposta4 = "Oceano Ártico";
+        Questao12.resposta5 = "Oceano Antártico";
+        Questao12.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao12);
+
+        var Questao13 = new Questao();
+        Questao13.Nivel = 2;
+        Questao13.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao13.pergunta = "Qual é a capital da Itália?";
+        Questao13.resposta1 = "Roma";
+        Questao13.resposta2 = "Milão";
+        Questao13.resposta3 = "Nápoles";
+        Questao13.resposta4 = "Florença";
+        Questao13.resposta5 = "Veneza";
+        Questao13.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao13);
+
+        var Questao14 = new Questao();
+        Questao14.Nivel = 2;
+        Questao14.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao14.pergunta = "Qual é o planeta mais próximo do sol?";
+        Questao14.resposta1 = "Terra";
+        Questao14.resposta2 = "Marte";
+        Questao14.resposta3 = "Mercúrio";
+        Questao14.resposta4 = "Vênus";
+        Questao14.resposta5 = "Júpiter";
+        Questao14.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao14);
+
+        var Questao15 = new Questao();
+        Questao15.Nivel = 2;
+        Questao15.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao15.pergunta = "Qual é o maior planeta do sistema solar?";
+        Questao15.resposta1 = "Terra";
+        Questao15.resposta2 = "Marte";
+        Questao15.resposta3 = "Júpiter";
+        Questao15.resposta4 = "Saturno";
+        Questao15.resposta5 = "Vênus";
+        Questao15.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao15);
+
+        var Questao16 = new Questao();
+        Questao16.Nivel = 2;
+        Questao16.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao16.pergunta = "Qual é a capital da França?";
+        Questao16.resposta1 = "Berlim";
+        Questao16.resposta2 = "Madrid";
+        Questao16.resposta3 = "Paris";
+        Questao16.resposta4 = "Roma";
+        Questao16.resposta5 = "Lisboa";
+        Questao16.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao16);
+
+        var Questao17 = new Questao();
+        Questao17.Nivel = 2;
+        Questao17.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao17.pergunta = "Quem escreveu 'Dom Casmurro'?";
+        Questao17.resposta1 = "Machado de Assis";
+        Questao17.resposta2 = "José de Alencar";
+        Questao17.resposta3 = "Joaquim Manuel de Macedo";
+        Questao17.resposta4 = "Clarice Lispector";
+        Questao17.resposta5 = "Carlos Drummond de Andrade";
+        Questao17.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao17);
+
+        var Questao18 = new Questao();
+        Questao18.Nivel = 2;
+        Questao18.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao18.pergunta = "Qual é o elemento químico representado pela letra 'O'?";
+        Questao18.resposta1 = "Ouro";
+        Questao18.resposta2 = "Oxigênio";
+        Questao18.resposta3 = "Ósmio";
+        Questao18.resposta4 = "Oganessônio";
+        Questao18.resposta5 = "Prata";
+        Questao18.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao18);
+
+        var Questao19 = new Questao();
+        Questao19.Nivel = 2;
+        Questao19.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao19.pergunta = "Qual é o maior deserto do mundo?";
+        Questao19.resposta1 = "Deserto do Saara";
+        Questao19.resposta2 = "Deserto da Antártida";
+        Questao19.resposta3 = "Deserto de Gobi";
+        Questao19.resposta4 = "Deserto da Arábia";
+        Questao19.resposta5 = "Deserto de Kalahari";
+        Questao19.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao19);
+
+        var Questao20 = new Questao();
+        Questao20.Nivel = 2;
+        Questao20.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao20.pergunta = "Quem pintou 'A Última Ceia'?";
+        Questao20.resposta1 = "Michelangelo";
+        Questao20.resposta2 = "Leonardo da Vinci";
+        Questao20.resposta3 = "Raphael";
+        Questao20.resposta4 = "Van Gogh";
+        Questao20.resposta5 = "Monet";
+        Questao20.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao20);
+
+        var Questao21 = new Questao();
+        Questao21.Nivel = 3;
+        Questao21.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao21.pergunta = "Qual é o maior planeta do sistema solar?";
+        Questao21.resposta1 = "Terra";
+        Questao21.resposta2 = "Marte";
+        Questao21.resposta3 = "Júpiter";
+        Questao21.resposta4 = "Saturno";
+        Questao21.resposta5 = "Vênus";
+        Questao21.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao21);
+
+        var Questao22 = new Questao();
+        Questao22.Nivel = 3;
+        Questao22.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao22.pergunta = "Quem é o autor de 'O Alquimista'?";
+        Questao22.resposta1 = "J.K. Rowling";
+        Questao22.resposta2 = "Paulo Coelho";
+        Questao22.resposta3 = "Gabriel García Márquez";
+        Questao22.resposta4 = "Ernest Hemingway";
+        Questao22.resposta5 = "F. Scott Fitzgerald";
+        Questao22.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao22);
+
+        var Questao23 = new Questao();
+        Questao23.Nivel = 3;
+        Questao23.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao23.pergunta = "Qual é a capital da Austrália?";
+        Questao23.resposta1 = "Sydney";
+        Questao23.resposta2 = "Melbourne";
+        Questao23.resposta3 = "Canberra";
+        Questao23.resposta4 = "Brisbane";
+        Questao23.resposta5 = "Perth";
+        Questao23.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao23);
+
+        var Questao24 = new Questao();
+        Questao24.Nivel = 3;
+        Questao24.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao24.pergunta = "Qual é o maior oceano do mundo?";
+        Questao24.resposta1 = "Oceano Atlântico";
+        Questao24.resposta2 = "Oceano Índico";
+        Questao24.resposta3 = "Oceano Pacífico";
+        Questao24.resposta4 = "Oceano Ártico";
+        Questao24.resposta5 = "Oceano Antártico";
+        Questao24.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao24);
+
+        var Questao25 = new Questao();
+        Questao25.Nivel = 3;
+        Questao25.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao25.pergunta = "Qual é o símbolo químico do ouro?";
+        Questao25.resposta1 = "Au";
+        Questao25.resposta2 = "Ag";
+        Questao25.resposta3 = "Pb";
+        Questao25.resposta4 = "Fe";
+        Questao25.resposta5 = "Hg";
+        Questao25.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao25);
+
+        var Questao26 = new Questao();
+        Questao26.Nivel = 3;
+        Questao26.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao26.pergunta = "Qual é a língua oficial do Brasil?";
+        Questao26.resposta1 = "Espanhol";
+        Questao26.resposta2 = "Português";
+        Questao26.resposta3 = "Inglês";
+        Questao26.resposta4 = "Francês";
+        Questao26.resposta5 = "Italiano";
+        Questao26.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao26);
+
+        var Questao27 = new Questao();
+        Questao27.Nivel = 3;
+        Questao27.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao27.pergunta = "Quem pintou a obra 'Guernica'?";
+        Questao27.resposta1 = "Pablo Picasso";
+        Questao27.resposta2 = "Vincent van Gogh";
+        Questao27.resposta3 = "Salvador Dalí";
+        Questao27.resposta4 = "Claude Monet";
+        Questao27.resposta5 = "Henri Matisse";
+        Questao27.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao27);
+
+        var Questao28 = new Questao();
+        Questao28.Nivel = 3;
+        Questao28.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao28.pergunta = "Qual é a montanha mais alta do mundo?";
+        Questao28.resposta1 = "K2";
+        Questao28.resposta2 = "Kilimanjaro";
+        Questao28.resposta3 = "Monte Everest";
+        Questao28.resposta4 = "Makalu";
+        Questao28.resposta5 = "Lhotse";
+        Questao28.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao28);
+
+        var Questao29 = new Questao();
+        Questao29.Nivel = 3;
+        Questao29.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao29.pergunta = "Qual é o famoso monumento em Paris?";
+        Questao29.resposta1 = "Torre Eiffel";
+        Questao29.resposta2 = "Coliseu";
+        Questao29.resposta3 = "Big Ben";
+        Questao29.resposta4 = "Estátua da Liberdade";
+        Questao29.resposta5 = "Cristo Redentor";
+        Questao29.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao29);
+
+        var Questao30 = new Questao();
+        Questao30.Nivel = 3;
+        Questao30.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao30.pergunta = "Qual é o maior mamífero do mundo?";
+        Questao30.resposta1 = "Elefante";
+        Questao30.resposta2 = "Baleia Azul";
+        Questao30.resposta3 = "Girafa";
+        Questao30.resposta4 = "Hipopótamo";
+        Questao30.resposta5 = "Orca";
+        Questao30.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao30);
+
+        var Questao31 = new Questao();
+        Questao31.Nivel = 4;
+        Questao31.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao31.pergunta = "Qual é a capital da França?";
+        Questao31.resposta1 = "Berlim";
+        Questao31.resposta2 = "Madrid";
+        Questao31.resposta3 = "Paris";
+        Questao31.resposta4 = "Lisboa";
+        Questao31.resposta5 = "Roma";
+        Questao31.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao31);
+
+        var Questao32 = new Questao();
+        Questao32.Nivel = 4;
+        Questao32.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao32.pergunta = "Qual é o elemento químico representado pela letra O?";
+        Questao32.resposta1 = "Ouro";
+        Questao32.resposta2 = "Oxigênio";
+        Questao32.resposta3 = "Osmônio";
+        Questao32.resposta4 = "Ósmio";
+        Questao32.resposta5 = "Oxônio";
+        Questao32.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao32);
+
+        var Questao33 = new Questao();
+        Questao33.Nivel = 4;
+        Questao33.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao33.pergunta = "Qual é a língua mais falada do mundo?";
+        Questao33.resposta1 = "Inglês";
+        Questao33.resposta2 = "Mandarim";
+        Questao33.resposta3 = "Espanhol";
+        Questao33.resposta4 = "Árabe";
+        Questao33.resposta5 = "Francês";
+        Questao33.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao33);
+
+        var Questao34 = new Questao();
+        Questao34.Nivel = 4;
+        Questao34.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao34.pergunta = "Qual é o planeta mais próximo do sol?";
+        Questao34.resposta1 = "Terra";
+        Questao34.resposta2 = "Vênus";
+        Questao34.resposta3 = "Mercúrio";
+        Questao34.resposta4 = "Marte";
+        Questao34.resposta5 = "Júpiter";
+        Questao34.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao34);
+
+        var Questao35 = new Questao();
+        Questao35.Nivel = 4;
+        Questao35.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao35.pergunta = "Qual é a moeda utilizada no Japão?";
+        Questao35.resposta1 = "Dólar";
+        Questao35.resposta2 = "Yuan";
+        Questao35.resposta3 = "Iene";
+        Questao35.resposta4 = "Won";
+        Questao35.resposta5 = "Rupia";
+        Questao35.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao35);
+
+        var Questao36 = new Questao();
+        Questao36.Nivel = 4;
+        Questao36.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao36.pergunta = "Quem escreveu 'Dom Casmurro'?";
+        Questao36.resposta1 = "José de Alencar";
+        Questao36.resposta2 = "Machado de Assis";
+        Questao36.resposta3 = "Joaquim Manuel de Macedo";
+        Questao36.resposta4 = "Clarice Lispector";
+        Questao36.resposta5 = "Graciliano Ramos";
+        Questao36.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao36);
+
+        var Questao37 = new Questao();
+        Questao37.Nivel = 4;
+        Questao37.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao37.pergunta = "Qual é a fórmula química da água?";
+        Questao37.resposta1 = "H2O";
+        Questao37.resposta2 = "O2";
+        Questao37.resposta3 = "CO2";
+        Questao37.resposta4 = "NaCl";
+        Questao37.resposta5 = "C6H12O6";
+        Questao37.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao37);
+
+        var Questao38 = new Questao();
+        Questao38.Nivel = 4;
+        Questao38.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao38.pergunta = "Qual é o autor da obra 'O Pequeno Príncipe'?";
+        Questao38.resposta1 = "Antoine de Saint-Exupéry";
+        Questao38.resposta2 = "Jules Verne";
+        Questao38.resposta3 = "Gabriel García Márquez";
+        Questao38.resposta4 = "Lewis Carroll";
+        Questao38.resposta5 = "Hans Christian Andersen";
+        Questao38.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao38);
+
+        var Questao39 = new Questao();
+        Questao39.Nivel = 4;
+        Questao39.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao39.pergunta = "Qual é o rio mais longo do mundo?";
+        Questao39.resposta1 = "Nilo";
+        Questao39.resposta2 = "Amazonas";
+        Questao39.resposta3 = "Yangtze";
+        Questao39.resposta4 = "Mississippi";
+        Questao39.resposta5 = "Ganges";
+        Questao39.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao39);
+
+        var Questao40 = new Questao();
+        Questao40.Nivel = 4;
+        Questao40.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao40.pergunta = "Qual é o continente onde fica o Egito?";
+        Questao40.resposta1 = "Ásia";
+        Questao40.resposta2 = "América";
+        Questao40.resposta3 = "África";
+        Questao40.resposta4 = "Europa";
+        Questao40.resposta5 = "Oceania";
+        Questao40.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao40);
+
+        var Questao41 = new Questao();
+        Questao41.Nivel = 5;
+        Questao41.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao41.pergunta = "Qual é o maior deserto do mundo?";
+        Questao41.resposta1 = "Deserto do Saara";
+        Questao41.resposta2 = "Deserto da Antártica";
+        Questao41.resposta3 = "Deserto de Gobi";
+        Questao41.resposta4 = "Deserto de Kalahari";
+        Questao41.resposta5 = "Deserto de Atacama";
+        Questao41.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao41);
+
+        var Questao42 = new Questao();
+        Questao42.Nivel = 5;
+        Questao42.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao42.pergunta = "Quem foi o primeiro homem a pisar na Lua?";
+        Questao42.resposta1 = "Buzz Aldrin";
+        Questao42.resposta2 = "Neil Armstrong";
+        Questao42.resposta3 = "Yuri Gagarin";
+        Questao42.resposta4 = "John Glenn";
+        Questao42.resposta5 = "Michael Collins";
+        Questao42.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao42);
+
+        var Questao43 = new Questao();
+        Questao43.Nivel = 5;
+        Questao43.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao43.pergunta = "Qual é a capital da Itália?";
+        Questao43.resposta1 = "Veneza";
+        Questao43.resposta2 = "Roma";
+        Questao43.resposta3 = "Milão";
+        Questao43.resposta4 = "Florença";
+        Questao43.resposta5 = "Nápoles";
+        Questao43.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao43);
+
+        var Questao44 = new Questao();
+        Questao44.Nivel = 5;
+        Questao44.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao44.pergunta = "Qual é o maior oceano do mundo?";
+        Questao44.resposta1 = "Oceano Atlântico";
+        Questao44.resposta2 = "Oceano Índico";
+        Questao44.resposta3 = "Oceano Pacífico";
+        Questao44.resposta4 = "Oceano Ártico";
+        Questao44.resposta5 = "Oceano Antártico";
+        Questao44.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao44);
+
+        var Questao45 = new Questao();
+        Questao45.Nivel = 5;
+        Questao45.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao45.pergunta = "Quem pintou a 'Monalisa'?";
+        Questao45.resposta1 = "Pablo Picasso";
+        Questao45.resposta2 = "Vincent van Gogh";
+        Questao45.resposta3 = "Leonardo da Vinci";
+        Questao45.resposta4 = "Michelangelo";
+        Questao45.resposta5 = "Rembrandt";
+        Questao45.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao45);
+
+        var Questao46 = new Questao();
+        Questao46.Nivel = 5;
+        Questao46.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao46.pergunta = "Qual é a montanha mais alta do mundo?";
+        Questao46.resposta1 = "K2";
+        Questao46.resposta2 = "Kangchenjunga";
+        Questao46.resposta3 = "Everest";
+        Questao46.resposta4 = "Lhotse";
+        Questao46.resposta5 = "Makalu";
+        Questao46.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao46);
+
+        var Questao47 = new Questao();
+        Questao47.Nivel = 5;
+        Questao47.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao47.pergunta = "Qual é a língua oficial do Brasil?";
+        Questao47.resposta1 = "Espanhol";
+        Questao47.resposta2 = "Inglês";
+        Questao47.resposta3 = "Português";
+        Questao47.resposta4 = "Francês";
+        Questao47.resposta5 = "Italiano";
+        Questao47.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao47);
+
+        var Questao48 = new Questao();
+        Questao48.Nivel = 5;
+        Questao48.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao48.pergunta = "Qual é o maior país do mundo em área territorial?";
+        Questao48.resposta1 = "Estados Unidos";
+        Questao48.resposta2 = "China";
+        Questao48.resposta3 = "Canadá";
+        Questao48.resposta4 = "Rússia";
+        Questao48.resposta5 = "Brasil";
+        Questao48.respostacorreta = 4;
+        ListaTodasQuestoes.Add(Questao48);
+
+        var Questao49 = new Questao();
+        Questao49.Nivel = 5;
+        Questao49.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao49.pergunta = "Qual é o símbolo químico do ouro?";
+        Questao49.resposta1 = "Au";
+        Questao49.resposta2 = "Ag";
+        Questao49.resposta3 = "Fe";
+        Questao49.resposta4 = "Hg";
+        Questao49.resposta5 = "Pb";
+        Questao49.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao49);
+
+        var Questao50 = new Questao();
+        Questao50.Nivel = 5;
+        Questao50.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao50.pergunta = "Quem é conhecido como o 'Pai da Psicanálise'?";
+        Questao50.resposta1 = "Carl Jung";
+        Questao50.resposta2 = "Sigmund Freud";
+        Questao50.resposta3 = "B.F. Skinner";
+        Questao50.resposta4 = "Albert Bandura";
+        Questao50.resposta5 = "Erik Erikson";
+        Questao50.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao50);
+
+        var Questao51 = new Questao();
+        Questao51.Nivel = 6;
+        Questao51.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao51.pergunta = "Qual é o nome do famoso relógio localizado em Londres?";
+        Questao51.resposta1 = "Big Ben";
+        Questao51.resposta2 = "Torre Eiffel";
+        Questao51.resposta3 = "Torre de Pisa";
+        Questao51.resposta4 = "Cristo Redentor";
+        Questao51.resposta5 = "Estátua da Liberdade";
+        Questao51.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao51);
+
+        var Questao52 = new Questao();
+        Questao52.Nivel = 6;
+        Questao52.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao52.pergunta = "Qual é a capital da Austrália?";
+        Questao52.resposta1 = "Sydney";
+        Questao52.resposta2 = "Melbourne";
+        Questao52.resposta3 = "Canberra";
+        Questao52.resposta4 = "Brisbane";
+        Questao52.resposta5 = "Perth";
+        Questao52.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao52);
+
+        var Questao53 = new Questao();
+        Questao53.Nivel = 6;
+        Questao53.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao53.pergunta = "Qual é o nome do maior animal terrestre?";
+        Questao53.resposta1 = "Elefante";
+        Questao53.resposta2 = "Girafa";
+        Questao53.resposta3 = "Rinoceronte";
+        Questao53.resposta4 = "Hipopótamo";
+        Questao53.resposta5 = "Tigre";
+        Questao53.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao53);
+
+        var Questao54 = new Questao();
+        Questao54.Nivel = 6;
+        Questao54.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao54.pergunta = "Quem foi o autor de '1984'?";
+        Questao54.resposta1 = "Aldous Huxley";
+        Questao54.resposta2 = "George Orwell";
+        Questao54.resposta3 = "Ray Bradbury";
+        Questao54.resposta4 = "Margaret Atwood";
+        Questao54.resposta5 = "Isaac Asimov";
+        Questao54.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao54);
+
+        var Questao55 = new Questao();
+        Questao55.Nivel = 6;
+        Questao55.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao55.pergunta = "Qual é a capital da Islândia?";
+        Questao55.resposta1 = "Oslo";
+        Questao55.resposta2 = "Reykjavík";
+        Questao55.resposta3 = "Copenhague";
+        Questao55.resposta4 = "Estocolmo";
+        Questao55.resposta5 = "Helsinque";
+        Questao55.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao55);
+
+        var Questao56 = new Questao();
+        Questao56.Nivel = 6;
+        Questao56.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao56.pergunta = "Qual é o maior planeta do Sistema Solar?";
+        Questao56.resposta1 = "Saturno";
+        Questao56.resposta2 = "Júpiter";
+        Questao56.resposta3 = "Netuno";
+        Questao56.resposta4 = "Urano";
+        Questao56.resposta5 = "Marte";
+        Questao56.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao56);
+
+        var Questao57 = new Questao();
+        Questao57.Nivel = 6;
+        Questao57.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao57.pergunta = "Qual é a moeda oficial da União Europeia?";
+        Questao57.resposta1 = "Dólar";
+        Questao57.resposta2 = "Libra Esterlina";
+        Questao57.resposta3 = "Franco Suíço";
+        Questao57.resposta4 = "Euro";
+        Questao57.resposta5 = "Coroa Sueca";
+        Questao57.respostacorreta = 4;
+        ListaTodasQuestoes.Add(Questao57);
+
+        var Questao58 = new Questao();
+        Questao58.Nivel = 6;
+        Questao58.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao58.pergunta = "Qual é a fórmula química do gás carbônico?";
+        Questao58.resposta1 = "CO";
+        Questao58.resposta2 = "CO2";
+        Questao58.resposta3 = "C2O";
+        Questao58.resposta4 = "C3O2";
+        Questao58.resposta5 = "C2H2";
+        Questao58.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao58);
+
+        var Questao59 = new Questao();
+        Questao59.Nivel = 6;
+        Questao59.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao59.pergunta = "Quem pintou o teto da Capela Sistina?";
+        Questao59.resposta1 = "Raphael";
+        Questao59.resposta2 = "Leonardo da Vinci";
+        Questao59.resposta3 = "Michelangelo";
+        Questao59.resposta4 = "Caravaggio";
+        Questao59.resposta5 = "Donatello";
+        Questao59.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao59);
+
+        var Questao60 = new Questao();
+        Questao60.Nivel = 6;
+        Questao60.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao60.pergunta = "Qual é a unidade de medida da pressão?";
+        Questao60.resposta1 = "Pascal";
+        Questao60.resposta2 = "Joule";
+        Questao60.resposta3 = "Newton";
+        Questao60.resposta4 = "Volt";
+        Questao60.resposta5 = "Ampère";
+        Questao60.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao60);
+
+        var Questao61 = new Questao();
+        Questao61.Nivel = 7;
+        Questao61.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao61.pergunta = "Qual é o nome da obra mais famosa de Shakespeare?";
+        Questao61.resposta1 = "Hamlet";
+        Questao61.resposta2 = "Othello";
+        Questao61.resposta3 = "Romeu e Julieta";
+        Questao61.resposta4 = "Macbeth";
+        Questao61.resposta5 = "Sonetos";
+        Questao61.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao61);
+
+        var Questao62 = new Questao();
+        Questao62.Nivel = 7;
+        Questao62.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao62.pergunta = "Qual é a capital da Nova Zelândia?";
+        Questao62.resposta1 = "Auckland";
+        Questao62.resposta2 = "Wellington";
+        Questao62.resposta3 = "Christchurch";
+        Questao62.resposta4 = "Hamilton";
+        Questao62.resposta5 = "Dunedin";
+        Questao62.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao62);
+
+        var Questao63 = new Questao();
+        Questao63.Nivel = 7;
+        Questao63.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao63.pergunta = "Qual é a principal religião do Japão?";
+        Questao63.resposta1 = "Cristianismo";
+        Questao63.resposta2 = "Islamismo";
+        Questao63.resposta3 = "Xintoísmo";
+        Questao63.resposta4 = "Budismo";
+        Questao63.resposta5 = "Hinduísmo";
+        Questao63.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao63);
+
+        var Questao64 = new Questao();
+        Questao64.Nivel = 7;
+        Questao64.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao64.pergunta = "Qual é o nome do primeiro livro da Bíblia?";
+        Questao64.resposta1 = "Êxodo";
+        Questao64.resposta2 = "Levítico";
+        Questao64.resposta3 = "Gênesis";
+        Questao64.resposta4 = "Números";
+        Questao64.resposta5 = "Deuteronômio";
+        Questao64.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao64);
+
+        var Questao65 = new Questao();
+        Questao65.Nivel = 7;
+        Questao65.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao65.pergunta = "Qual é a fórmula química do sal de cozinha?";
+        Questao65.resposta1 = "NaCl";
+        Questao65.resposta2 = "KCl";
+        Questao65.resposta3 = "MgCl2";
+        Questao65.resposta4 = "CaCl2";
+        Questao65.resposta5 = "Na2SO4";
+        Questao65.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao65);
+
+        var Questao66 = new Questao();
+        Questao66.Nivel = 7;
+        Questao66.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao66.pergunta = "Qual é o planeta conhecido como 'Planeta Vermelho'?";
+        Questao66.resposta1 = "Marte";
+        Questao66.resposta2 = "Vênus";
+        Questao66.resposta3 = "Júpiter";
+        Questao66.resposta4 = "Mercúrio";
+        Questao66.resposta5 = "Saturno";
+        Questao66.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao66);
+
+        var Questao67 = new Questao();
+        Questao67.Nivel = 7;
+        Questao67.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao67.pergunta = "Qual é a capital da Grécia?";
+        Questao67.resposta1 = "Atenas";
+        Questao67.resposta2 = "Tóquio";
+        Questao67.resposta3 = "Roma";
+        Questao67.resposta4 = "Lisboa";
+        Questao67.resposta5 = "Berlim";
+        Questao67.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao67);
+
+        var Questao68 = new Questao();
+        Questao68.Nivel = 7;
+        Questao68.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao68.pergunta = "Qual é a capital do Canadá?";
+        Questao68.resposta1 = "Toronto";
+        Questao68.resposta2 = "Vancouver";
+        Questao68.resposta3 = "Ottawa";
+        Questao68.resposta4 = "Montreal";
+        Questao68.resposta5 = "Calgary";
+        Questao68.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao68);
+
+        var Questao69 = new Questao();
+        Questao69.Nivel = 7;
+        Questao69.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao69.pergunta = "Qual é o símbolo químico do hidrogênio?";
+        Questao69.resposta1 = "H";
+        Questao69.resposta2 = "He";
+        Questao69.resposta3 = "O";
+        Questao69.resposta4 = "N";
+        Questao69.resposta5 = "C";
+        Questao69.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao69);
+
+        var Questao70 = new Questao();
+        Questao70.Nivel = 7;
+        Questao70.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao70.pergunta = "Quem é conhecido como o 'Rei do Pop'?";
+        Questao70.resposta1 = "Elvis Presley";
+        Questao70.resposta2 = "Michael Jackson";
+        Questao70.resposta3 = "Prince";
+        Questao70.resposta4 = "Madonna";
+        Questao70.resposta5 = "Freddie Mercury";
+        Questao70.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao70);
+
+        var Questao71 = new Questao();
+        Questao71.Nivel = 8;
+        Questao71.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao71.pergunta = "Qual é o nome do sistema que classifica os seres vivos?";
+        Questao71.resposta1 = "Taxonomia";
+        Questao71.resposta2 = "Anatomia";
+        Questao71.resposta3 = "Evolução";
+        Questao71.resposta4 = "Genética";
+        Questao71.resposta5 = "Citoquímica";
+        Questao71.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao71);
+
+        var Questao72 = new Questao();
+        Questao72.Nivel = 8;
+        Questao72.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao72.pergunta = "Quem escreveu 'Dom Quixote'?";
+        Questao72.resposta1 = "Gabriel García Márquez";
+        Questao72.resposta2 = "Miguel de Cervantes";
+        Questao72.resposta3 = "Jorge Luis Borges";
+        Questao72.resposta4 = "William Shakespeare";
+        Questao72.resposta5 = "Victor Hugo";
+        Questao72.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao72);
+
+        var Questao73 = new Questao();
+        Questao73.Nivel = 8;
+        Questao73.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao73.pergunta = "Qual é a principal função dos glóbulos vermelhos no sangue?";
+        Questao73.resposta1 = "Defesa contra infecções";
+        Questao73.resposta2 = "Transporte de oxigênio";
+        Questao73.resposta3 = "Coagulação";
+        Questao73.resposta4 = "Transporte de nutrientes";
+        Questao73.resposta5 = "Produção de hormônios";
+        Questao73.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao73);
+
+        var Questao74 = new Questao();
+        Questao74.Nivel = 8;
+        Questao74.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao74.pergunta = "Qual é a maior floresta tropical do mundo?";
+        Questao74.resposta1 = "Floresta Amazônica";
+        Questao74.resposta2 = "Floresta do Congo";
+        Questao74.resposta3 = "Floresta de Taiga";
+        Questao74.resposta4 = "Floresta Boreal";
+        Questao74.resposta5 = "Floresta Atlântica";
+        Questao74.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao74);
+
+        var Questao75 = new Questao();
+        Questao75.Nivel = 8;
+        Questao75.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao75.pergunta = "Qual é a capital da Rússia?";
+        Questao75.resposta1 = "São Petersburgo";
+        Questao75.resposta2 = "Moscovo";
+        Questao75.resposta3 = "Kiev";
+        Questao75.resposta4 = "Tóquio";
+        Questao75.resposta5 = "Pequim";
+        Questao75.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao75);
+
+        var Questao76 = new Questao();
+        Questao76.Nivel = 8;
+        Questao76.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao76.pergunta = "Qual é o elemento químico com o símbolo 'Na'?";
+        Questao76.resposta1 = "Nitrogênio";
+        Questao76.resposta2 = "Sódio";
+        Questao76.resposta3 = "Alumínio";
+        Questao76.resposta4 = "Nátron";
+        Questao76.resposta5 = "Cálcio";
+        Questao76.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao76);
+
+        var Questao77 = new Questao();
+        Questao77.Nivel = 8;
+        Questao77.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao77.pergunta = "Quem escreveu 'A Divina Comédia'?";
+        Questao77.resposta1 = "Dante Alighieri";
+        Questao77.resposta2 = "Homer";
+        Questao77.resposta3 = "Virgílio";
+        Questao77.resposta4 = "Boccaccio";
+        Questao77.resposta5 = "Petrarca";
+        Questao77.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao77);
+
+        var Questao78 = new Questao();
+        Questao78.Nivel = 8;
+        Questao78.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao78.pergunta = "Qual é o nome do processo pelo qual as plantas produzem seu próprio alimento?";
+        Questao78.resposta1 = "Fotossíntese";
+        Questao78.resposta2 = "Respiração";
+        Questao78.resposta3 = "Transpiração";
+        Questao78.resposta4 = "Digestão";
+        Questao78.resposta5 = "Fermentação";
+        Questao78.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao78);
+
+        var Questao79 = new Questao();
+        Questao79.Nivel = 8;
+        Questao79.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao79.pergunta = "Qual é o nome do famoso monumento que representa o Cristo Redentor?";
+        Questao79.resposta1 = "Cristo da Aparecida";
+        Questao79.resposta2 = "Cristo do Corcovado";
+        Questao79.resposta3 = "Cristo de Lisboa";
+        Questao79.resposta4 = "Cristo de Assunção";
+        Questao79.resposta5 = "Cristo de Buenos Aires";
+        Questao79.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao79);
+
+        var Questao80 = new Questao();
+        Questao80.Nivel = 8;
+        Questao80.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao80.pergunta = "Qual é o maior oceano do mundo?";
+        Questao80.resposta1 = "Oceano Atlântico";
+        Questao80.resposta2 = "Oceano Índico";
+        Questao80.resposta3 = "Oceano Pacífico";
+        Questao80.resposta4 = "Oceano Ártico";
+        Questao80.resposta5 = "Oceano Antártico";
+        Questao80.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao80);
+
+        var Questao81 = new Questao();
+        Questao81.Nivel = 9;
+        Questao81.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao81.pergunta = "Qual é o autor da teoria da relatividade?";
+        Questao81.resposta1 = "Isaac Newton";
+        Questao81.resposta2 = "Niels Bohr";
+        Questao81.resposta3 = "Albert Einstein";
+        Questao81.resposta4 = "Galileu Galilei";
+        Questao81.resposta5 = "Stephen Hawking";
+        Questao81.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao81);
+
+        var Questao82 = new Questao();
+        Questao82.Nivel = 9;
+        Questao82.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao82.pergunta = "Qual é a capital da Austrália?";
+        Questao82.resposta1 = "Sydney";
+        Questao82.resposta2 = "Melbourne";
+        Questao82.resposta3 = "Canberra";
+        Questao82.resposta4 = "Brisbane";
+        Questao82.resposta5 = "Perth";
+        Questao82.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao82);
+
+        var Questao83 = new Questao();
+        Questao83.Nivel = 9;
+        Questao83.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao83.pergunta = "Qual é a fórmula química da água?";
+        Questao83.resposta1 = "H2O";
+        Questao83.resposta2 = "CO2";
+        Questao83.resposta3 = "O2";
+        Questao83.resposta4 = "H2O2";
+        Questao83.resposta5 = "C6H12O6";
+        Questao83.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao83);
+
+        var Questao84 = new Questao();
+        Questao84.Nivel = 9;
+        Questao84.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao84.pergunta = "Qual é a capital da Espanha?";
+        Questao84.resposta1 = "Madri";
+        Questao84.resposta2 = "Barcelona";
+        Questao84.resposta3 = "Sevilha";
+        Questao84.resposta4 = "Valência";
+        Questao84.resposta5 = "Bilbau";
+        Questao84.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao84);
+
+        var Questao85 = new Questao();
+        Questao85.Nivel = 9;
+        Questao85.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao85.pergunta = "Quem escreveu 'Dom Casmurro'?";
+        Questao85.resposta1 = "Machado de Assis";
+        Questao85.resposta2 = "José de Alencar";
+        Questao85.resposta3 = "Graciliano Ramos";
+        Questao85.resposta4 = "Jorge Amado";
+        Questao85.resposta5 = "Raquel de Queiroz";
+        Questao85.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao85);
+
+        var Questao86 = new Questao();
+        Questao86.Nivel = 9;
+        Questao86.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao86.pergunta = "Qual é a moeda oficial do Japão?";
+        Questao86.resposta1 = "Yuan";
+        Questao86.resposta2 = "Won";
+        Questao86.resposta3 = "Dólar";
+        Questao86.resposta4 = "Iene";
+        Questao86.resposta5 = "Peso";
+        Questao86.respostacorreta = 4;
+        ListaTodasQuestoes.Add(Questao86);
+
+        var Questao87 = new Questao();
+        Questao87.Nivel = 9;
+        Questao87.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao87.pergunta = "Qual é o planeta mais próximo do Sol?";
+        Questao87.resposta1 = "Vênus";
+        Questao87.resposta2 = "Terra";
+        Questao87.resposta3 = "Mercúrio";
+        Questao87.resposta4 = "Marte";
+        Questao87.resposta5 = "Júpiter";
+        Questao87.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao87);
+
+        var Questao88 = new Questao();
+        Questao88.Nivel = 9;
+        Questao88.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao88.pergunta = "Qual é o maior animal terrestre?";
+        Questao88.resposta1 = "Girafa";
+        Questao88.resposta2 = "Elefante Africano";
+        Questao88.resposta3 = "Rinoceronte";
+        Questao88.resposta4 = "Hipopótamo";
+        Questao88.resposta5 = "Urso Polar";
+        Questao88.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao88);
+
+        var Questao89 = new Questao();
+        Questao89.Nivel = 9;
+        Questao89.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao89.pergunta = "Qual é a principal fonte de energia da Terra?";
+        Questao89.resposta1 = "Vento";
+        Questao89.resposta2 = "Sol";
+        Questao89.resposta3 = "Água";
+        Questao89.resposta4 = "Carvão";
+        Questao89.resposta5 = "Gás Natural";
+        Questao89.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao89);
+
+        var Questao90 = new Questao();
+        Questao90.Nivel = 9;
+        Questao90.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao90.pergunta = "Qual é o elemento químico com símbolo 'O'?";
+        Questao90.resposta1 = "Ouro";
+        Questao90.resposta2 = "Oxigênio";
+        Questao90.resposta3 = "Ósmio";
+        Questao90.resposta4 = "Oganessônio";
+        Questao90.resposta5 = "Ondínio";
+        Questao90.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao90);
+
+        var Questao91 = new Questao();
+        Questao91.Nivel = 10;
+        Questao91.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao91.pergunta = "Qual país é conhecido como a Terra do Sol Nascente?";
+        Questao91.resposta1 = "China";
+        Questao91.resposta2 = "Coreia do Sul";
+        Questao91.resposta3 = "Japão";
+        Questao91.resposta4 = "Tailândia";
+        Questao91.resposta5 = "Filipinas";
+        Questao91.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao91);
+
+        var Questao92 = new Questao();
+        Questao92.Nivel = 10;
+        Questao92.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao92.pergunta = "Qual é o maior órgão do corpo humano?";
+        Questao92.resposta1 = "Coração";
+        Questao92.resposta2 = "Fígado";
+        Questao92.resposta3 = "Pele";
+        Questao92.resposta4 = "Pulmão";
+        Questao92.resposta5 = "Rim";
+        Questao92.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao92);
+
+        var Questao93 = new Questao();
+        Questao93.Nivel = 10;
+        Questao93.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao93.pergunta = "Qual é a capital da Itália?";
+        Questao93.resposta1 = "Roma";
+        Questao93.resposta2 = "Veneza";
+        Questao93.resposta3 = "Milão";
+        Questao93.resposta4 = "Nápoles";
+        Questao93.resposta5 = "Florença";
+        Questao93.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao93);
+
+        var Questao94 = new Questao();
+        Questao94.Nivel = 10;
+        Questao94.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao94.pergunta = "Qual é a fórmula química do sal de cozinha?";
+        Questao94.resposta1 = "NaCl";
+        Questao94.resposta2 = "KCl";
+        Questao94.resposta3 = "CaCO3";
+        Questao94.resposta4 = "HCl";
+        Questao94.resposta5 = "NH4Cl";
+        Questao94.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao94);
+
+        var Questao95 = new Questao();
+        Questao95.Nivel = 10;
+        Questao95.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao95.pergunta = "Qual é o animal símbolo da Austrália?";
+        Questao95.resposta1 = "Canguru";
+        Questao95.resposta2 = "Koala";
+        Questao95.resposta3 = "Emu";
+        Questao95.resposta4 = "Dingo";
+        Questao95.resposta5 = "Wallaby";
+        Questao95.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao95);
+
+        var Questao96 = new Questao();
+        Questao96.Nivel = 10;
+        Questao96.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao96.pergunta = "Qual é a força que puxa os objetos em direção à Terra?";
+        Questao96.resposta1 = "Magnetismo";
+        Questao96.resposta2 = "Inércia";
+        Questao96.resposta3 = "Gravidade";
+        Questao96.resposta4 = "Fricção";
+        Questao96.resposta5 = "Empuxo";
+        Questao96.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao96);
+
+        var Questao97 = new Questao();
+        Questao97.Nivel = 10;
+        Questao97.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao97.pergunta = "Qual é a unidade de medida da pressão?";
+        Questao97.resposta1 = "Joule";
+        Questao97.resposta2 = "Pascal";
+        Questao97.resposta3 = "Newton";
+        Questao97.resposta4 = "Watt";
+        Questao97.resposta5 = "Ampere";
+        Questao97.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao97);
+
+        var Questao98 = new Questao();
+        Questao98.Nivel = 10;
+        Questao98.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao98.pergunta = "Qual é o principal gás que compõe a atmosfera terrestre?";
+        Questao98.resposta1 = "Oxigênio";
+        Questao98.resposta2 = "Nitrogênio";
+        Questao98.resposta3 = "Dióxido de Carbono";
+        Questao98.resposta4 = "Hélio";
+        Questao98.resposta5 = "Argônio";
+        Questao98.respostacorreta = 2;
+        ListaTodasQuestoes.Add(Questao98);
+
+        var Questao99 = new Questao();
+        Questao99.Nivel = 10;
+        Questao99.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao99.pergunta = "Qual é o processo pelo qual as plantas produzem seu alimento?";
+        Questao99.resposta1 = "Respiração";
+        Questao99.resposta2 = "Fermentação";
+        Questao99.resposta3 = "Fotossíntese";
+        Questao99.resposta4 = "Digestão";
+        Questao99.resposta5 = "Transpiração";
+        Questao99.respostacorreta = 3;
+        ListaTodasQuestoes.Add(Questao99);
+
+        var Questao100 = new Questao();
+        Questao100.Nivel = 10;
+        Questao100.ConfigurarEstruturaDesenho(labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05);
+        Questao100.pergunta = "Qual é a capital da Alemanha?";
+        Questao100.resposta1 = "Berlim";
+        Questao100.resposta2 = "Munique";
+        Questao100.resposta3 = "Hamburgo";
+        Questao100.resposta4 = "Colônia";
+        Questao100.resposta5 = "Frankfurt";
+        Questao100.respostacorreta = 1;
+        ListaTodasQuestoes.Add(Questao100);
+
         ProximaQuestao();
-
-        var Q2 = new Questao();
-        Q1.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q1.questaoi = "Quanto é 2 + 2?";
-        Q1.resposta1 = "3";
-        Q1.resposta2 = "4";
-        Q1.resposta3 = "5";
-        Q1.resposta4 = "6";
-        Q1.resposta5 = "7";
-        Q1.RespostaC = 2;
-        ListaQuestao.Add(Q1);
-
-        var Q3 = new Questao();
-        Q2.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q2.questaoi = "Qual a capital da França?";
-        Q2.resposta1 = "Madrid";
-        Q2.resposta2 = "Berlim";
-        Q2.resposta3 = "Paris";
-        Q2.resposta4 = "Lisboa";
-        Q2.resposta5 = "Roma";
-        Q2.RespostaC = 3;
-        ListaQuestao.Add(Q2);
-
-        var Q4 = new Questao();
-        Q3.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q3.questaoi = "Qual é a cor do céu em um dia claro?";
-        Q3.resposta1 = "Verde";
-        Q3.resposta2 = "Azul";
-        Q3.resposta3 = "Amarelo";
-        Q3.resposta4 = "Vermelho";
-        Q3.resposta5 = "Roxo";
-        Q3.RespostaC = 2;
-        ListaQuestao.Add(Q3);
-
-        var Q5 = new Questao();
-        Q4.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q4.questaoi = "Quantos dias tem uma semana?";
-        Q4.resposta1 = "5";
-        Q4.resposta2 = "6";
-        Q4.resposta3 = "7";
-        Q4.resposta4 = "8";
-        Q4.resposta5 = "9";
-        Q4.RespostaC = 3;
-        ListaQuestao.Add(Q4);
-
-        var Q6 = new Questao();
-        Q5.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q5.questaoi = "Qual é o animal conhecido como 'rei da selva'?";
-        Q5.resposta1 = "Leão";
-        Q5.resposta2 = "Tigre";
-        Q5.resposta3 = "Elefante";
-        Q5.resposta4 = "Urso";
-        Q5.resposta5 = "Lobo";
-        Q5.RespostaC = 1;
-        ListaQuestao.Add(Q5);
-
-        var Q7 = new Questao();
-        Q6.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q6.questaoi = "Qual é o primeiro mês do ano?";
-        Q6.resposta1 = "Fevereiro";
-        Q6.resposta2 = "Março";
-        Q6.resposta3 = "Janeiro";
-        Q6.resposta4 = "Abril";
-        Q6.resposta5 = "Maio";
-        Q6.RespostaC = 3;
-        ListaQuestao.Add(Q6);
-
-        var Q8 = new Questao();
-        Q7.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q7.questaoi = "Qual é a moeda do Brasil?";
-        Q7.resposta1 = "Dólar";
-        Q7.resposta2 = "Euro";
-        Q7.resposta3 = "Real";
-        Q7.resposta4 = "Peso";
-        Q7.resposta5 = "Libra";
-        Q7.RespostaC = 3;
-        ListaQuestao.Add(Q7);
-
-        var Q9 = new Questao();
-        Q8.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q8.questaoi = "Qual é o maior mamífero do mundo?";
-        Q8.resposta1 = "Elefante";
-        Q8.resposta2 = "Baleia Azul";
-        Q8.resposta3 = "Girafa";
-        Q8.resposta4 = "Orca";
-        Q8.resposta5 = "Rinoceronte";
-        Q8.RespostaC = 2;
-        ListaQuestao.Add(Q8);
-
-        var Q10 = new Questao();
-        Q9.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q9.questaoi = "Quantas letras tem o alfabeto português?";
-        Q9.resposta1 = "24";
-        Q9.resposta2 = "26";
-        Q9.resposta3 = "27";
-        Q9.resposta4 = "28";
-        Q9.resposta5 = "29";
-        Q9.RespostaC = 2;
-        ListaQuestao.Add(Q9);
-
-        //nivel 2
-        var Q11 = new Questao();
-        Q11.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q11.questaoi = "Qual é a raiz quadrada de 16?";
-        Q11.resposta1 = "2";
-        Q11.resposta2 = "4";
-        Q11.resposta3 = "8";
-        Q11.resposta4 = "10";
-        Q11.resposta5 = "6";
-        Q11.RespostaC = 2;
-        ListaQuestao.Add(Q11);
-
-        var Q12 = new Questao();
-        Q12.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q12.questaoi = "Quantos continentes existem no mundo?";
-        Q12.resposta1 = "5";
-        Q12.resposta2 = "6";
-        Q12.resposta3 = "7";
-        Q12.resposta4 = "8";
-        Q12.resposta5 = "9";
-        Q12.RespostaC = 3;
-        ListaQuestao.Add(Q12);
-
-        var Q13 = new Questao();
-        Q13.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q13.questaoi = "Qual é a soma de 10 + 15?";
-        Q13.resposta1 = "20";
-        Q13.resposta2 = "25";
-        Q13.resposta3 = "30";
-        Q13.resposta4 = "15";
-        Q13.resposta5 = "35";
-        Q13.RespostaC = 2;
-        ListaQuestao.Add(Q13);
-
-        var Q14 = new Questao();
-        Q14.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q14.questaoi = "Qual é a capital da Itália?";
-        Q14.resposta1 = "Roma";
-        Q14.resposta2 = "Milão";
-        Q14.resposta3 = "Veneza";
-        Q14.resposta4 = "Florença";
-        Q14.resposta5 = "Nápoles";
-        Q14.RespostaC = 1;
-        ListaQuestao.Add(Q14);
-
-        var Q15 = new Questao();
-        Q15.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q15.questaoi = "Qual é o planeta mais próximo do sol?";
-        Q15.resposta1 = "Vênus";
-        Q15.resposta2 = "Terra";
-        Q15.resposta3 = "Mercúrio";
-        Q15.resposta4 = "Marte";
-        Q15.resposta5 = "Júpiter";
-        Q15.RespostaC = 3;
-        ListaQuestao.Add(Q15);
-
-        var Q16 = new Questao();
-        Q16.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q16.questaoi = "Quem é o autor de 'Harry Potter'?";
-        Q16.resposta1 = "J.R.R. Tolkien";
-        Q16.resposta2 = "J.K. Rowling";
-        Q16.resposta3 = "C.S. Lewis";
-        Q16.resposta4 = "George R.R. Martin";
-        Q16.resposta5 = "Agatha Christie";
-        Q16.RespostaC = 2;
-        ListaQuestao.Add(Q16);
-
-        var Q17 = new Questao();
-        Q17.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q17.questaoi = "Qual é a fórmula química do gás carbônico?";
-        Q17.resposta1 = "O2";
-        Q17.resposta2 = "H2O";
-        Q17.resposta3 = "CO2";
-        Q17.resposta4 = "NaCl";
-        Q17.resposta5 = "CH4";
-        Q17.RespostaC = 3;
-        ListaQuestao.Add(Q17);
-
-        var Q18 = new Questao();
-        Q18.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q18.questaoi = "Qual é o nome do processo pelo qual as plantas fazem fotossíntese?";
-        Q18.resposta1 = "Respiração";
-        Q18.resposta2 = "Fermentação";
-        Q18.resposta3 = "Transpiração";
-        Q18.resposta4 = "Fotossíntese";
-        Q18.resposta5 = "Digestão";
-        Q18.RespostaC = 4;
-        ListaQuestao.Add(Q18);
-
-        var Q19 = new Questao();
-        Q19.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q19.questaoi = "Quantos meses têm 30 dias?";
-        Q19.resposta1 = "4";
-        Q19.resposta2 = "5";
-        Q19.resposta3 = "6";
-        Q19.resposta4 = "7";
-        Q19.resposta5 = "8";
-        Q19.RespostaC = 1;
-        ListaQuestao.Add(Q19);
-
-        var Q20 = new Questao();
-        Q20.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q20.questaoi = "Qual é o maior oceano do mundo?";
-        Q20.resposta1 = "Atlântico";
-        Q20.resposta2 = "Índico";
-        Q20.resposta3 = "Ártico";
-        Q20.resposta4 = "Pacífico";
-        Q20.resposta5 = "Antártico";
-        Q20.RespostaC = 4;
-        ListaQuestao.Add(Q20);
-
-        //nivel 3
-        var Q21 = new Questao();
-        Q21.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q21.questaoi = "Quem escreveu 'Dom Casmurro'?";
-        Q21.resposta1 = "Machado de Assis";
-        Q21.resposta2 = "José de Alencar";
-        Q21.resposta3 = "Clarice Lispector";
-        Q21.resposta4 = "Jorge Amado";
-        Q21.resposta5 = "Graciliano Ramos";
-        Q21.RespostaC = 1;
-        ListaQuestao.Add(Q21);
-
-        var Q22 = new Questao();
-        Q21.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q21.questaoi = "Qual é a capital da Austrália?";
-        Q21.resposta1 = "Sydney";
-        Q21.resposta2 = "Canberra";
-        Q21.resposta3 = "Melbourne";
-        Q21.resposta4 = "Brisbane";
-        Q21.resposta5 = "Perth";
-        Q21.RespostaC = 2;
-        ListaQuestao.Add(Q22);
-
-        var Q23 = new Questao();
-        Q22.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q22.questaoi = "Em que ano foi a Independência do Brasil?";
-        Q22.resposta1 = "1822";
-        Q22.resposta2 = "1888";
-        Q22.resposta3 = "1500";
-        Q22.resposta4 = "1930";
-        Q22.resposta5 = "1964";
-        Q22.RespostaC = 1;
-        ListaQuestao.Add(Q23);
-
-        var Q24 = new Questao();
-        Q23.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q23.questaoi = "Qual é o maior deserto do mundo?";
-        Q23.resposta1 = "Sahara";
-        Q23.resposta2 = "Gobi";
-        Q23.resposta3 = "Ártico";
-        Q23.resposta4 = "Antártico";
-        Q23.resposta5 = "Kalahari";
-        Q23.RespostaC = 4;
-        ListaQuestao.Add(Q24);
-
-        var Q25 = new Questao();
-        Q24.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q24.questaoi = "Quem foi o primeiro homem a pisar na Lua?";
-        Q24.resposta1 = "Yuri Gagarin";
-        Q24.resposta2 = "Buzz Aldrin";
-        Q24.resposta3 = "Neil Armstrong";
-        Q24.resposta4 = "Michael Collins";
-        Q24.resposta5 = "John Glenn";
-        Q24.RespostaC = 3;
-        ListaQuestao.Add(Q25);
-
-        var Q26 = new Questao();
-        Q25.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q25.questaoi = "Qual é o maior país do mundo?";
-        Q25.resposta1 = "Canadá";
-        Q25.resposta2 = "China";
-        Q25.resposta3 = "Estados Unidos";
-        Q25.resposta4 = "Rússia";
-        Q25.resposta5 = "Brasil";
-        Q25.RespostaC = 4;
-        ListaQuestao.Add(Q26);
-
-        var Q27 = new Questao();
-        Q26.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q26.questaoi = "Qual é o símbolo químico do ferro?";
-        Q26.resposta1 = "Fe";
-        Q26.resposta2 = "F";
-        Q26.resposta3 = "Ir";
-        Q26.resposta4 = "Fr";
-        Q26.resposta5 = "Au";
-        Q26.RespostaC = 1;
-        ListaQuestao.Add(Q27);
-
-        var Q28 = new Questao();
-        Q27.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q27.questaoi = "Quem é conhecido como o 'pai da psicanálise'?";
-        Q27.resposta1 = "Carl Jung";
-        Q27.resposta2 = "Sigmund Freud";
-        Q27.resposta3 = "Alfred Adler";
-        Q27.resposta4 = "Ivan Pavlov";
-        Q27.resposta5 = "Jean Piaget";
-        Q27.RespostaC = 2;
-        ListaQuestao.Add(Q28);
-
-        var Q29 = new Questao();
-        Q28.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q28.questaoi = "Qual é a moeda oficial do Japão?";
-        Q28.resposta1 = "Yuan";
-        Q28.resposta2 = "Won";
-        Q28.resposta3 = "Iene";
-        Q28.resposta4 = "Dólar";
-        Q28.resposta5 = "Euro";
-        Q28.RespostaC = 3;
-        ListaQuestao.Add(Q29);
-
-        var Q30 = new Questao();
-        Q29.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q29.questaoi = "Qual é o órgão responsável pela bomba do sistema circulatório?";
-        Q29.resposta1 = "Cérebro";
-        Q29.resposta2 = "Fígado";
-        Q29.resposta3 = "Coração";
-        Q29.resposta4 = "Pulmão";
-        Q29.resposta5 = "Rim";
-        Q29.RespostaC = 3;
-        ListaQuestao.Add(Q30);
-
-        //nivel 4
-        var Q31 = new Questao();
-        Q31.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q31.questaoi = "Qual é o elemento químico com símbolo 'O'?";
-        Q31.resposta1 = "Ouro";
-        Q31.resposta2 = "Oxigênio";
-        Q31.resposta3 = "Prata";
-        Q31.resposta4 = "Água";
-        Q31.resposta5 = "Cobre";
-        Q31.RespostaC = 2;
-        ListaQuestao.Add(Q31);
-
-        var Q32 = new Questao();
-        Q32.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q32.questaoi = "Qual é o elemento químico com símbolo 'Na'?";
-        Q32.resposta1 = "Nitrogênio";
-        Q32.resposta2 = "Sódio";
-        Q32.resposta3 = "Potássio";
-        Q32.resposta4 = "Cálcio";
-        Q32.resposta5 = "Magnésio";
-        Q32.RespostaC = 2;
-        ListaQuestao.Add(Q32);
-
-        var Q33 = new Questao();
-        Q33.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q33.questaoi = "Quem foi o primeiro presidente dos Estados Unidos?";
-        Q33.resposta1 = "George Washington";
-        Q33.resposta2 = "Thomas Jefferson";
-        Q33.resposta3 = "Abraham Lincoln";
-        Q33.resposta4 = "John Adams";
-        Q33.resposta5 = "Franklin Roosevelt";
-        Q33.RespostaC = 1;
-        ListaQuestao.Add(Q33);
-
-        var Q34 = new Questao();
-        Q34.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q34.questaoi = "Qual é o nome do maior rio do mundo?";
-        Q34.resposta1 = "Amazonas";
-        Q34.resposta2 = "Nilo";
-        Q34.resposta3 = "Yangtze";
-        Q34.resposta4 = "Mississippi";
-        Q34.resposta5 = "Ganges";
-        Q34.RespostaC = 1;
-        ListaQuestao.Add(Q34);
-
-        var Q35 = new Questao();
-        Q35.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q35.questaoi = "Qual é a capital da Noruega?";
-        Q35.resposta1 = "Copenhague";
-        Q35.resposta2 = "Oslo";
-        Q35.resposta3 = "Estocolmo";
-        Q35.resposta4 = "Helsinque";
-        Q35.resposta5 = "Reykjavik";
-        Q35.RespostaC = 2;
-        ListaQuestao.Add(Q35);
-
-        var Q36 = new Questao();
-        Q36.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q36.questaoi = "Qual é a principal língua falada no Brasil?";
-        Q36.resposta1 = "Espanhol";
-        Q36.resposta2 = "Francês";
-        Q36.resposta3 = "Português";
-        Q36.resposta4 = "Inglês";
-        Q36.resposta5 = "Italiano";
-        Q36.RespostaC = 3;
-        ListaQuestao.Add(Q36);
-
-        var Q37 = new Questao();
-        Q37.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q37.questaoi = "Em que continente fica o Egito?";
-        Q37.resposta1 = "África";
-        Q37.resposta2 = "Ásia";
-        Q37.resposta3 = "Europa";
-        Q37.resposta4 = "América";
-        Q37.resposta5 = "Oceania";
-        Q37.RespostaC = 1;
-        ListaQuestao.Add(Q37);
-
-        var Q38 = new Questao();
-        Q38.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q38.questaoi = "Quem pintou 'A Última Ceia'?";
-        Q38.resposta1 = "Michelangelo";
-        Q38.resposta2 = "Leonardo da Vinci";
-        Q38.resposta3 = "Raphael";
-        Q38.resposta4 = "Van Gogh";
-        Q38.resposta5 = "Monet";
-        Q38.RespostaC = 2;
-        ListaQuestao.Add(Q38);
-
-        var Q39 = new Questao();
-        Q39.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q39.questaoi = "Qual é o maior continente do mundo?";
-        Q39.resposta1 = "África";
-        Q39.resposta2 = "América do Sul";
-        Q39.resposta3 = "Ásia";
-        Q39.resposta4 = "Europa";
-        Q39.resposta5 = "Oceania";
-        Q39.RespostaC = 3;
-        ListaQuestao.Add(Q39);
-
-        var Q40 = new Questao();
-        Q40.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q40.questaoi = "Qual é o principal gas responsável pelo efeito estufa?";
-        Q40.resposta1 = "Oxigênio";
-        Q40.resposta2 = "Nitrogênio";
-        Q40.resposta3 = "Dióxido de carbono";
-        Q40.resposta4 = "Hélio";
-        Q40.resposta5 = "Metano";
-        Q40.RespostaC = 3;
-        ListaQuestao.Add(Q40);
-
-        //nivel 5
-        var Q41 = new Questao();
-        Q41.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q41.questaoi = "Qual é o maior planeta do sistema solar?";
-        Q41.resposta1 = "Terra";
-        Q41.resposta2 = "Júpiter";
-        Q41.resposta3 = "Marte";
-        Q41.resposta4 = "Saturno";
-        Q41.resposta5 = "Netuno";
-        Q41.RespostaC = 2;
-        ListaQuestao.Add(Q41);
-
-        var Q42 = new Questao();
-        Q42.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q42.questaoi = "Qual é a teoria que explica a origem do universo?";
-        Q42.resposta1 = "Teoria da Evolução";
-        Q42.resposta2 = "Teoria do Big Bang";
-        Q42.resposta3 = "Teoria da Relatividade";
-        Q42.resposta4 = "Teoria das Cordas";
-        Q42.resposta5 = "Teoria do Caos";
-        Q42.RespostaC = 2;
-        ListaQuestao.Add(Q42);
-
-        var Q43 = new Questao();
-        Q43.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q43.questaoi = "Qual é o nome da obra-prima de Leonardo da Vinci que retrata uma mulher com um sorriso enigmático?";
-        Q43.resposta1 = "A Última Ceia";
-        Q43.resposta2 = "Mona Lisa";
-        Q43.resposta3 = "A Criação de Adão";
-        Q43.resposta4 = "A Escola de Atenas";
-        Q43.resposta5 = "Madona das Rochas";
-        Q43.RespostaC = 2;
-        ListaQuestao.Add(Q43);
-
-        var Q44 = new Questao();
-        Q44.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q44.questaoi = "Quem escreveu 'Dom Quixote'?";
-        Q44.resposta1 = "Gabriel García Márquez";
-        Q44.resposta2 = "Miguel de Cervantes";
-        Q44.resposta3 = "Jorge Luis Borges";
-        Q44.resposta4 = "Mark Twain";
-        Q44.resposta5 = "Victor Hugo";
-        Q44.RespostaC = 2;
-        ListaQuestao.Add(Q44);
-
-        var Q45 = new Questao();
-        Q45.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q45.questaoi = "Qual é a capital do Egito?";
-        Q45.resposta1 = "Cairo";
-        Q45.resposta2 = "Alexandria";
-        Q45.resposta3 = "Luxor";
-        Q45.resposta4 = "Giza";
-        Q45.resposta5 = "Aswan";
-        Q45.RespostaC = 1;
-        ListaQuestao.Add(Q45);
-
-        var Q46 = new Questao();
-        Q46.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q46.questaoi = "Qual é a maior estrutura viva do planeta?";
-        Q46.resposta1 = "A Grande Barreira de Corais";
-        Q46.resposta2 = "A Floresta Amazônica";
-        Q46.resposta3 = "O Cânion de Yarlung Tsangpo";
-        Q46.resposta4 = "A Serra do Mar";
-        Q46.resposta5 = "A Floresta de Taiga";
-        Q46.RespostaC = 1;
-        ListaQuestao.Add(Q46);
-
-        var Q47 = new Questao();
-        Q47.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q47.questaoi = "Qual é o nome da teoria que explica a seleção natural das espécies?";
-        Q47.resposta1 = "Teoria da Evolução";
-        Q47.resposta2 = "Teoria do Design Inteligente";
-        Q47.resposta3 = "Teoria da Hereditariedade";
-        Q47.resposta4 = "Teoria da Biogênese";
-        Q47.resposta5 = "Teoria da Espontaneidade";
-        Q47.RespostaC = 1;
-        ListaQuestao.Add(Q47);
-
-        var Q48 = new Questao();
-        Q48.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q48.questaoi = "Qual é o nome da obra que contém os 'Princípios Matemáticos da Filosofia Natural'?";
-        Q48.resposta1 = "A Origem das Espécies";
-        Q48.resposta2 = "O Capital";
-        Q48.resposta3 = "Principia Mathematica";
-        Q48.resposta4 = "A Interpretação das Culturas";
-        Q48.resposta5 = "Os Ensaios";
-        Q48.RespostaC = 3;
-        ListaQuestao.Add(Q48);
-
-        var Q49 = new Questao();
-        Q49.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q49.questaoi = "Qual é o principal gás responsável pela fotossíntese?";
-        Q49.resposta1 = "Dióxido de carbono";
-        Q49.resposta2 = "Oxigênio";
-        Q49.resposta3 = "Metano";
-        Q49.resposta4 = "Hélio";
-        Q49.resposta5 = "Nitrogênio";
-        Q49.RespostaC = 1;
-        ListaQuestao.Add(Q49);
-
-       var Q50 = new Questao();
-       Q50.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-       Q50.questaoi = "Qual é o sistema político onde o poder é exercido por um pequeno grupo de pessoas?";
-       Q50.resposta1 = "Democracia";
-       Q50.resposta2 = "Oligarquia";
-       Q50.resposta3 = "Monarquia";
-       Q50.resposta4 = "Anarquia";
-       Q50.resposta5 = "Autocracia";
-       Q50.RespostaC = 2;
-       ListaQuestao.Add(Q50); 
-
-       //nivel 6
-       var Q51 = new Questao();
-        Q51.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q51.questaoi = "Qual é a obra mais famosa de Miguel de Cervantes?";
-        Q51.resposta1 = "Don Quixote";
-        Q51.resposta2 = "O Cortiço";
-        Q51.resposta3 = "Cem Anos de Solidão";
-        Q51.resposta4 = "A Divina Comédia";
-        Q51.resposta5 = "Os Maias";
-        Q51.RespostaC = 1;
-        ListaQuestao.Add(Q51);
-
-        var Q52 = new Questao();
-        Q52.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q52.questaoi = "Qual é o princípio da física que explica a conservação da energia?";
-        Q52.resposta1 = "Princípio da Inércia";
-        Q52.resposta2 = "Princípio da Termodinâmica";
-        Q52.resposta3 = "Princípio da Ação e Reação";
-        Q52.resposta4 = "Princípio da Gravitação Universal";
-        Q52.resposta5 = "Princípio da Conservação da Energia";
-        Q52.RespostaC = 5;
-        ListaQuestao.Add(Q52);
-
-        var Q53 = new Questao();
-        Q53.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q53.questaoi = "Qual artista é conhecido como o pai da pintura a óleo?";
-        Q53.resposta1 = "Pablo Picasso";
-        Q53.resposta2 = "Vincent van Gogh";
-        Q53.resposta3 = "Jan van Eyck";
-        Q53.resposta4 = "Claude Monet";
-        Q53.resposta5 = "Edvard Munch";
-        Q53.RespostaC = 3;
-        ListaQuestao.Add(Q53);
-
-        var Q54 = new Questao();
-        Q54.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q54.questaoi = "Qual é a capital do Canadá?";
-        Q54.resposta1 = "Toronto";
-        Q54.resposta2 = "Vancouver";
-        Q54.resposta3 = "Ottawa";
-        Q54.resposta4 = "Montreal";
-        Q54.resposta5 = "Calgary";
-        Q54.RespostaC = 3;
-        ListaQuestao.Add(Q54);
-
-        var Q55 = new Questao();
-        Q55.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q55.questaoi = "Quem formulou as leis do movimento e a lei da gravitação universal?";
-        Q55.resposta1 = "Galileu Galilei";
-        Q55.resposta2 = "Isaac Newton";
-        Q55.resposta3 = "Albert Einstein";
-        Q55.resposta4 = "Niels Bohr";
-        Q55.resposta5 = "Max Planck";
-        Q55.RespostaC = 2;
-        ListaQuestao.Add(Q55);
-
-        var Q56 = new Questao();
-        Q56.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q56.questaoi = "Qual é o nome do fenômeno em que a luz é desviada ao passar por um prisma?";
-        Q56.resposta1 = "Refração";
-        Q56.resposta2 = "Reflexão";
-        Q56.resposta3 = "Dispersão";
-        Q56.resposta4 = "Absorção";
-        Q56.resposta5 = "Difração";
-        Q56.RespostaC = 3;
-        ListaQuestao.Add(Q56);
-
-        var Q57 = new Questao();
-        Q57.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q57.questaoi = "Qual foi o primeiro país a conceder o direito de voto às mulheres?";
-        Q57.resposta1 = "Suécia";
-        Q57.resposta2 = "Nova Zelândia";
-        Q57.resposta3 = "Estados Unidos";
-        Q57.resposta4 = "Reino Unido";
-        Q57.resposta5 = "França";
-        Q57.RespostaC = 2;
-        ListaQuestao.Add(Q57);
-
-        var Q58 = new Questao();
-        Q58.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q58.questaoi = "Qual é a principal fonte de energia do Sol?";
-        Q58.resposta1 = "Fusão nuclear";
-        Q58.resposta2 = "Fissão nuclear";
-        Q58.resposta3 = "Combustão";
-        Q58.resposta4 = "Energia geotérmica";
-        Q58.resposta5 = "Energia solar";
-        Q58.RespostaC = 1;
-        ListaQuestao.Add(Q58);
-
-        var Q59 = new Questao();
-        Q59.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q59.questaoi = "Qual é a unidade de medida da força no Sistema Internacional?";
-        Q59.resposta1 = "Joule";
-        Q59.resposta2 = "Newton";
-        Q59.resposta3 = "Pascal";
-        Q59.resposta4 = "Watt";
-        Q59.resposta5 = "Volt";
-        Q59.RespostaC = 2;
-        ListaQuestao.Add(Q59);
-
-        var Q60 = new Questao();
-        Q60.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q60.questaoi = "Qual é a teoria que descreve a evolução das espécies por seleção natural?";
-        Q60.resposta1 = "Teoria da Relatividade";
-        Q60.resposta2 = "Teoria da Evolução";
-        Q60.resposta3 = "Teoria da Genética";
-        Q60.resposta4 = "Teoria do Caos";
-        Q60.resposta5 = "Teoria da Simplicidade";
-        Q60.RespostaC = 2;
-        ListaQuestao.Add(Q60);
-
-        //nivel 7
-        var Q61 = new Questao();
-        Q61.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q61.questaoi = "Qual é o princípio da incerteza proposto por Heisenberg?";
-        Q61.resposta1 = "É impossível conhecer simultaneamente a posição e a velocidade de uma partícula.";
-        Q61.resposta2 = "Toda ação tem uma reação igual e oposta.";
-        Q61.resposta3 = "A energia não pode ser criada nem destruída.";
-        Q61.resposta4 = "O universo tende ao estado de maior entropia.";
-        Q61.resposta5 = "A luz se comporta como partícula e onda.";
-        Q61.RespostaC = 1;
-        ListaQuestao.Add(Q61);
-
-        var Q62 = new Questao();
-        Q62.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q62.questaoi = "Qual é a principal obra filosófica de Friedrich Nietzsche?";
-        Q62.resposta1 = "Assim Falou Zaratustra";
-        Q62.resposta2 = "A Gaia Ciência";
-        Q62.resposta3 = "Além do Bem e do Mal";
-        Q62.resposta4 = "Ecce Homo";
-        Q62.resposta5 = "A Vontade de Poder";
-        Q62.RespostaC = 1;
-        ListaQuestao.Add(Q62);
-
-        var Q63 = new Questao();
-        Q63.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q63.questaoi = "Quem desenvolveu a teoria da relatividade geral?";
-        Q63.resposta1 = "Isaac Newton";
-        Q63.resposta2 = "Albert Einstein";
-        Q63.resposta3 = "Niels Bohr";
-        Q63.resposta4 = "Galileu Galilei";
-        Q63.resposta5 = "Stephen Hawking";
-        Q63.RespostaC = 2;
-        ListaQuestao.Add(Q63);
-
-        var Q64 = new Questao();
-        Q64.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q64.questaoi = "Qual é o nome do processo pelo qual as células se dividem?";
-        Q64.resposta1 = "Meiose";
-        Q64.resposta2 = "Mitoses";
-        Q64.resposta3 = "Fagocitose";
-        Q64.resposta4 = "Difusão";
-        Q64.resposta5 = "Transcrição";
-        Q64.RespostaC = 2;
-        ListaQuestao.Add(Q64);
-
-        var Q65 = new Questao();
-        Q65.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q65.questaoi = "Qual é a corrente filosófica que defende que a verdade é relativa e depende da perspectiva?";
-        Q65.resposta1 = "Realismo";
-        Q65.resposta2 = "Idealismo";
-        Q65.resposta3 = "Relativismo";
-        Q65.resposta4 = "Empirismo";
-        Q65.resposta5 = "Racionalismo";
-        Q65.RespostaC = 3;
-        ListaQuestao.Add(Q65);
-
-        var Q66 = new Questao();
-        Q66.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q66.questaoi = "Quem é conhecido como o 'pai da história'?";
-        Q66.resposta1 = "Heródoto";
-        Q66.resposta2 = "Tucídides";
-        Q66.resposta3 = "Políbio";
-        Q66.resposta4 = "César";
-        Q66.resposta5 = "Plínio";
-        Q66.RespostaC = 1;
-        ListaQuestao.Add(Q66);
-
-        var Q67 = new Questao();
-        Q67.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q67.questaoi = "Qual é a principal característica das células eucarióticas?";
-        Q67.resposta1 = "Possuem núcleo definido.";
-        Q67.resposta2 = "Não possuem membrana plasmática.";
-        Q67.resposta3 = "São unicelulares apenas.";
-        Q67.resposta4 = "Possuem apenas ribossomos.";
-        Q67.resposta5 = "São sempre procarióticas.";
-        Q67.RespostaC = 1;
-        ListaQuestao.Add(Q67);
-
-        var Q68 = new Questao();
-        Q68.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q68.questaoi = "Qual é a maior cadeia montanhosa do mundo?";
-        Q68.resposta1 = "Andes";
-        Q68.resposta2 = "Himalaias";
-        Q68.resposta3 = "Alpes";
-        Q68.resposta4 = "Rocosas";
-        Q68.resposta5 = "Apalaches";
-        Q68.RespostaC = 2;
-        ListaQuestao.Add(Q68);
-
-        var Q69 = new Questao();
-        Q69.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q69.questaoi = "Qual é a obra de Shakespeare que conta a história de dois amantes de famílias rivais?";
-        Q69.resposta1 = "Hamlet";
-        Q69.resposta2 = "Otelo";
-        Q69.resposta3 = "Romeu e Julieta";
-        Q69.resposta4 = "Macbeth";
-        Q69.resposta5 = "Sonho de uma Noite de Verão";
-        Q69.RespostaC = 3;
-        ListaQuestao.Add(Q69);
-
-        var Q70 = new Questao();
-        Q70.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q70.questaoi = "Qual é a fórmula química do ácido sulfúrico?";
-        Q70.resposta1 = "HCl";
-        Q70.resposta2 = "H2SO4";
-        Q70.resposta3 = "H2CO3";
-        Q70.resposta4 = "HNO3";
-        Q70.resposta5 = "CH3COOH";
-        Q70.RespostaC = 2;
-        ListaQuestao.Add(Q70);
-
-        //nivel 8
-        var Q71 = new Questao();
-        Q71.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q71.questaoi = "Qual é a teoria que explica a origem das espécies por meio da seleção natural?";
-        Q71.resposta1 = "Teoria da Evolução";
-        Q71.resposta2 = "Teoria da Genética";
-        Q71.resposta3 = "Teoria do Design Inteligente";
-        Q71.resposta4 = "Teoria da Relatividade";
-        Q71.resposta5 = "Teoria do Caos";
-        Q71.RespostaC = 1;
-        ListaQuestao.Add(Q71);
-
-        var Q72 = new Questao();
-        Q72.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q72.questaoi = "Quem propôs a lei da gravitação universal?";
-        Q72.resposta1 = "Galileu Galilei";
-        Q72.resposta2 = "Isaac Newton";
-        Q72.resposta3 = "Albert Einstein";
-        Q72.resposta4 = "Niels Bohr";
-        Q72.resposta5 = "Stephen Hawking";
-        Q72.RespostaC = 2;
-        ListaQuestao.Add(Q72);
-
-        var Q73 = new Questao();
-        Q73.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q73.questaoi = "Qual é a principal obra de Karl Marx?";
-        Q73.resposta1 = "A Revolução dos Bichos";
-        Q73.resposta2 = "O Capital";
-        Q73.resposta3 = "A Origem das Espécies";
-        Q73.resposta4 = "O Príncipe";
-        Q73.resposta5 = "A Riqueza das Nações";
-        Q73.RespostaC = 2;
-        ListaQuestao.Add(Q73);
-
-        var Q74 = new Questao();
-        Q74.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q74.questaoi = "Qual é o nome do filósofo que introduziu o conceito de 'imperativo categórico'?";
-        Q74.resposta1 = "Friedrich Nietzsche";
-        Q74.resposta2 = "Immanuel Kant";
-        Q74.resposta3 = "David Hume";
-        Q74.resposta4 = "Georg Hegel";
-        Q74.resposta5 = "John Stuart Mill";
-        Q74.RespostaC = 2;
-        ListaQuestao.Add(Q74);
-
-        var Q75 = new Questao();
-        Q75.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q75.questaoi = "Qual é a unidade de medida da energia no Sistema Internacional?";
-        Q75.resposta1 = "Joule";
-        Q75.resposta2 = "Caloria";
-        Q75.resposta3 = "Watt";
-        Q75.resposta4 = "Newton";
-        Q75.resposta5 = "Volt";
-        Q75.RespostaC = 1;
-        ListaQuestao.Add(Q75);
-
-        var Q76 = new Questao();
-        Q76.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q76.questaoi = "Qual é a capital da Rússia?";
-        Q76.resposta1 = "São Petersburgo";
-        Q76.resposta2 = "Moscovo";
-        Q76.resposta3 = "Kazan";
-        Q76.resposta4 = "Novosibirsk";
-        Q76.resposta5 = "Vladivostok";
-        Q76.RespostaC = 2;
-        ListaQuestao.Add(Q76);
-
-        var Q77 = new Questao();
-        Q77.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q77.questaoi = "Qual é o princípio da termodinâmica que afirma que a energia não pode ser criada nem destruída?";
-        Q77.resposta1 = "Primeira Lei da Termodinâmica";
-        Q77.resposta2 = "Segunda Lei da Termodinâmica";
-        Q77.resposta3 = "Terceira Lei da Termodinâmica";
-        Q77.resposta4 = "Lei de Coulomb";
-        Q77.resposta5 = "Lei da Conservação da Massa";
-        Q77.RespostaC = 1;
-        ListaQuestao.Add(Q77);
-
-        var Q78 = new Questao();
-        Q78.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q78.questaoi = "Qual é a maior cidade da Austrália?";
-        Q78.resposta1 = "Sydney";
-        Q78.resposta2 = "Melbourne";
-        Q78.resposta3 = "Brisbane";
-        Q78.resposta4 = "Canberra";
-        Q78.resposta5 = "Perth";
-        Q78.RespostaC = 1;
-        ListaQuestao.Add(Q78);
-
-        var Q79 = new Questao();
-        Q79.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q79.questaoi = "Quem escreveu 'O Príncipe'?";
-        Q79.resposta1 = "Thomas Hobbes";
-        Q79.resposta2 = "Niccolò Machiavelli";
-        Q79.resposta3 = "John Locke";
-        Q79.resposta4 = "Jean-Jacques Rousseau";
-        Q79.resposta5 = "Friedrich Engels";
-        Q79.RespostaC = 2;
-        ListaQuestao.Add(Q79);
-
-        var Q80 = new Questao();
-        Q80.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q80.questaoi = "Qual é a obra-prima de Miguel Ângelo localizada na Capela Sistina?";
-        Q80.resposta1 = "A Criação de Adão";
-        Q80.resposta2 = "A Última Ceia";
-        Q80.resposta3 = "O Davi";
-        Q80.resposta4 = "A Pietà";
-        Q80.resposta5 = "A Escola de Atenas";
-        Q80.RespostaC = 1;
-        ListaQuestao.Add(Q80);
-
-        //nivel 9
-        var Q81 = new Questao();
-        Q81.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q81.questaoi = "Qual é a fórmula da Teoria da Relatividade de Einstein?";
-        Q81.resposta1 = "E=mc^2";
-        Q81.resposta2 = "F=ma";
-        Q81.resposta3 = "a^2 + b^2 = c^2";
-        Q81.resposta4 = "PV=nRT";
-        Q81.resposta5 = "V=IR";
-        Q81.RespostaC = 1;
-        ListaQuestao.Add(Q81);
-
-        var Q82 = new Questao();
-        Q82.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q82.questaoi = "Qual civilização antiga construiu as pirâmides de Gizé?";
-        Q82.resposta1 = "Mesopotâmios";
-        Q82.resposta2 = "Egípcios";
-        Q82.resposta3 = "Maias";
-        Q82.resposta4 = "Gregos";
-        Q82.resposta5 = "Romanos";
-        Q82.RespostaC = 2;
-        ListaQuestao.Add(Q82);
-
-        var Q83 = new Questao();
-        Q83.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q83.questaoi = "Qual filósofo grego é conhecido como o 'pai da filosofia' ?";
-        Q83.resposta1 = "Platão";
-        Q83.resposta2 = "Sócrates";
-        Q83.resposta3 = "Aristóteles";
-        Q83.resposta4 = "Heráclito";
-        Q83.resposta5 = "Epicuro";
-        Q83.RespostaC = 2;
-        ListaQuestao.Add(Q83);
-
-        var Q84 = new Questao();
-        Q84.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q84.questaoi = "Qual é a principal obra de Shakespeare?";
-        Q84.resposta1 = "Romeu e Julieta";
-        Q84.resposta2 = "Hamlet";
-        Q84.resposta3 = "Macbeth";
-        Q84.resposta4 = "Otelo";
-        Q84.resposta5 = "Sonetos";
-        Q84.RespostaC = 2;
-        ListaQuestao.Add(Q84);
-
-        var Q85 = new Questao();
-        Q85.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q85.questaoi = "Quem pintou 'A Última Ceia'?";
-        Q85.resposta1 = "Raphael";
-        Q85.resposta2 = "Leonardo da Vinci";
-        Q85.resposta3 = "Michelangelo";
-        Q85.resposta4 = "Caravaggio";
-        Q85.resposta5 = "Van Gogh";
-        Q85.RespostaC = 2;
-        ListaQuestao.Add(Q85);
-
-        var Q86 = new Questao();
-        Q86.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q86.questaoi = "Qual é o elemento químico com o símbolo 'Hg'?";
-        Q86.resposta1 = "Mercúrio";
-        Q86.resposta2 = "Hidrogênio";
-        Q86.resposta3 = "Cálcio";
-        Q86.resposta4 = "Cloro";
-        Q86.resposta5 = "Oxigênio";
-        Q86.RespostaC = 1;
-        ListaQuestao.Add(Q86);
-
-        var Q87 = new Questao();
-        Q87.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q87.questaoi = "Qual é a capital da Suécia?";
-        Q87.resposta1 = "Oslo";
-        Q87.resposta2 = "Copenhague";
-        Q87.resposta3 = "Estocolmo";
-        Q87.resposta4 = "Helsinque";
-        Q87.resposta5 = "Reykjavik";
-        Q87.RespostaC = 3;
-        ListaQuestao.Add(Q87);
-
-        var Q88 = new Questao();
-        Q88.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q88.questaoi = "Quem descobriu a penicilina?";
-        Q88.resposta1 = "Louis Pasteur";
-        Q88.resposta2 = "Alexander Fleming";
-        Q88.resposta3 = "Marie Curie";
-        Q88.resposta4 = "Thomas Edison";
-        Q88.resposta5 = "Isaac Newton";
-        Q88.RespostaC = 2;
-        ListaQuestao.Add(Q88);
-
-        var Q89 = new Questao();
-        Q89.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q89.questaoi = "Qual é a língua oficial da China?";
-        Q89.resposta1 = "Inglês";
-        Q89.resposta2 = "Mandarim";
-        Q89.resposta3 = "Cantonês";
-        Q89.resposta4 = "Japonês";
-        Q89.resposta5 = "Coreano";
-        Q89.RespostaC = 2;
-        ListaQuestao.Add(Q89);
-
-        var Q90 = new Questao();
-        Q90.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q90.questaoi = "Qual é o nome do maior deserto do mundo?";
-        Q90.resposta1 = "Deserto da Arábia";
-        Q90.resposta2 = "Deserto do Saara";
-        Q90.resposta3 = "Deserto de Gobi";
-        Q90.resposta4 = "Deserto da Antártica";
-        Q90.resposta5 = "Deserto de Kalahari";
-        Q90.RespostaC = 4;
-        ListaQuestao.Add(Q90);
-
-        //nivel 10
-        var Q91 = new Questao();
-        Q91.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q91.questaoi = "Qual é a hipótese que propõe que o universo está se expandindo?";
-        Q91.resposta1 = "Teoria do Big Bang";
-        Q91.resposta2 = "Teoria da Relatividade Geral";
-        Q91.resposta3 = "Teoria da Evolução";
-        Q91.resposta4 = "Teoria da Gravitação Universal";
-        Q91.resposta5 = "Teoria da Supercorda";
-        Q91.RespostaC = 1;
-        ListaQuestao.Add(Q91);
-
-        var Q92 = new Questao();
-        Q92.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q92.questaoi = "Qual é o conceito filosófico que defende que o conhecimento é derivado da experiência sensorial?";
-        Q92.resposta1 = "Racionalismo";
-        Q92.resposta2 = "Empirismo";
-        Q92.resposta3 = "Idealismo";
-        Q92.resposta4 = "Ceticismo";
-        Q92.resposta5 = "Existencialismo";
-        Q92.RespostaC = 2;
-        ListaQuestao.Add(Q92);
-
-        var Q93 = new Questao();
-        Q93.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q93.questaoi = "Quem foi o autor do 'Príncipe', um tratado sobre política?";
-        Q93.resposta1 = "Friedrich Nietzsche";
-        Q93.resposta2 = "Niccolò Machiavelli";
-        Q93.resposta3 = "Jean-Paul Sartre";
-        Q93.resposta4 = "Thomas Hobbes";
-        Q93.resposta5 = "Karl Marx";
-        Q93.RespostaC = 2;
-        ListaQuestao.Add(Q93);
-
-        var Q94 = new Questao();
-        Q94.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q94.questaoi = "Qual é o principal componente do núcleo da Terra?";
-        Q94.resposta1 = "Silício";
-        Q94.resposta2 = "Ferro";
-        Q94.resposta3 = "Níquel";
-        Q94.resposta4 = "Cobre";
-        Q94.resposta5 = "Alumínio";
-        Q94.RespostaC = 2;
-        ListaQuestao.Add(Q94);
-
-        var Q95 = new Questao();
-        Q95.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q95.questaoi = "Qual é o conceito que descreve a mudança gradual das espécies ao longo do tempo?";
-        Q95.resposta1 = "Transgênese";
-        Q95.resposta2 = "Evolução";
-        Q95.resposta3 = "Mutação";
-        Q95.resposta4 = "Seleção Natural";
-        Q95.resposta5 = "Homeostase";
-        Q95.RespostaC = 2;
-        ListaQuestao.Add(Q95);
-
-        var Q96 = new Questao();
-        Q96.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q96.questaoi = "Qual é a obra que marca o início da Filosofia Moderna e é atribuída a René Descartes?";
-        Q96.resposta1 = "Meditações sobre a Filosofia Primeira";
-        Q96.resposta2 = "Discurso do Método";
-        Q96.resposta3 = "Crítica da Razão Pura";
-        Q96.resposta4 = "Ética";
-        Q96.resposta5 = "O Príncipe";
-        Q96.RespostaC = 2;
-        ListaQuestao.Add(Q96);
-
-        var Q97 = new Questao();
-        Q97.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q97.questaoi = "Qual é o princípio que estabelece que a energia total do universo é constante?";
-        Q97.resposta1 = "Lei da Conservação da Energia";
-        Q97.resposta2 = "Princípio da Incerteza de Heisenberg";
-        Q97.resposta3 = "Teorema de Pitágoras";
-        Q97.resposta4 = "Teoria da Relatividade";
-        Q97.resposta5 = "Lei de Murphy";
-        Q97.RespostaC = 1;
-        ListaQuestao.Add(Q97);
-
-        var Q98 = new Questao();
-        Q98.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q98.questaoi = "Qual é o fenômeno pelo qual a luz se desvia ao passar por um objeto em um campo gravitacional forte?";
-        Q98.resposta1 = "Refração";
-        Q98.resposta2 = "Reflexão";
-        Q98.resposta3 = "Dilatamento do Tempo";
-        Q98.resposta4 = "Gravitação";
-        Q98.resposta5 = "Lente Gravitacional";
-        Q98.RespostaC = 5;
-        ListaQuestao.Add(Q98);
-
-        var Q99 = new Questao();
-        Q99.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q99.questaoi = "Quem formulou a Lei da Gravitação Universal?";
-        Q99.resposta1 = "Galileu Galilei";
-        Q99.resposta2 = "Isaac Newton";
-        Q99.resposta3 = "Albert Einstein";
-        Q99.resposta4 = "Niels Bohr";
-        Q99.resposta5 = "Johannes Kepler";
-        Q99.RespostaC = 2;
-        ListaQuestao.Add(Q99);
-
-        var Q100 = new Questao();
-        Q100.ConfiguraDesenho(per, buttonrep1, bot2, bot3, bot4, bot5);
-        Q100.questaoi = "Qual é o teorema que estabelece que a soma dos ângulos internos de um triângulo é sempre 180 graus?";
-        Q100.resposta1 = "Teorema de Pitágoras";
-        Q100.resposta2 = "Teorema da Semelhança";
-        Q100.resposta3 = "Teorema dos Triângulos Isósceles";
-        Q100.resposta4 = "Teorema dos Ângulos Internos";
-        Q100.resposta5 = "Teorema de Euclides";
-        Q100.RespostaC = 4;
-        ListaQuestao.Add(Q100);
-
     }
-
-    void ProximaQuestao()
+    public void ProximaQuestao()
     {
-        var ListaQuestoes = ListaTodasQuestoes.Where(d=>d.Nivel==NivelAtual).ToList();
-       var NumAlet = Random.Shared.Next(0, ListaQuestoes.Count-1);
-       var NovaQuestao = ListaQuestoes[NumAlet];
-       while (ListaTodasQuestoesRespondidas.Contains(NovaQuestao))
-       {
-        NumAlet = Random.Shared.Next(0, ListaQuestoes.Count-1);
-        NovaQuestao = ListaQuestoes[NumAlet];
-       }
-       ListaTodasQuestoesRespondidas.Add(NovaQuestao);
-       QuestaoCorrente = NovaQuestao;
-       QuestaoCorrente.desenhar();
-
+        var ListaQuestoes = ListaTodasQuestoes.Where(d => d.Nivel == NivelAtual).ToList();
+        var NumAlet = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+        var NovaQuestao = ListaQuestoes[NumAlet];
+        while (ListaTodasQuestoesRespondidas.Contains(NovaQuestao))
+        {
+            NumAlet = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+            NovaQuestao = ListaQuestoes[NumAlet];
+        }
+        ListaTodasQuestoesRespondidas.Add(NovaQuestao);
+        QuestaoCorrente = NovaQuestao;
+        QuestaoCorrente.desenhar();
     }
-    public int Pontuação { get; private set; }
+    public int Pontuacao { get; private set; }
     int NivelAtual = 1;
     void Inicializar()
     {
-        Pontuação = 0;
+        ListaTodasQuestoesRespondidas.Clear();
+        Pontuacao = 0;
         NivelAtual = 1;
         ProximaQuestao();
     }
-
-    public async void VerificaCorreto(int rr)
+    public async void VerificaResposta(int RR)
     {
-        if (QuestaoAtual.EstaCorreto(rr))
+        if (QuestaoCorrente.VerificaResposta(RR))
         {
             await Task.Delay(1000);
-            AdicionarPontuacao(NivelAtual);
+            AdicionaPontuacao(NivelAtual);
             NivelAtual++;
-            ProximaQuestao();
             if (NivelAtual == 10)
-            await App.Current.MainPage.DisplayAlert("VOCÊ ACERTOU TUDO!", "PARABÉNS!", "OK");
+                await App.Current.MainPage.DisplayAlert("VOCÊ ACERTOU TUDO!", "PARABÉNS!", "OK");
             ProximaQuestao();
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("Fim", "Voce errou", "ok");
+            await App.Current.MainPage.DisplayAlert("GAME OVER", "VOCÊ ERROU", "OK");
             Inicializar();
         }
-        labelPontuacao.Text = "Pontuação:R$" + Pontuação.ToString();
+        labelPontuacao.Text = "Pontuação: R$" + Pontuacao.ToString();
         labelNivel.Text = "Nível:" + NivelAtual.ToString();
+
     }
-    void AdicionarPontuacao(int n)
+    void AdicionaPontuacao(int n)
     {
         if (n == 1)
-            Pontuação = 1000;
+            Pontuacao = 1000;
         else if (n == 2)
-            Pontuação = 2000;
+            Pontuacao = 2000;
         else if (n == 3)
-            Pontuação = 5000;
+            Pontuacao = 5000;
         else if (n == 4)
-            Pontuação = 10000;
+            Pontuacao = 10000;
         else if (n == 5)
-            Pontuação = 20000;
+            Pontuacao = 20000;
         else if (n == 6)
-            Pontuação = 50000;
+            Pontuacao = 50000;
         else if (n == 7)
-            Pontuação = 100000;
+            Pontuacao = 100000;
         else if (n == 8)
-            Pontuação = 200000;
+            Pontuacao = 200000;
         else if (n == 9)
             Pontuacao = 500000;
         else
             Pontuacao = 1000000;
     }
-
 }
-

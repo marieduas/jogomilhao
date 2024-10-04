@@ -29,82 +29,130 @@
                      Grid.RowSpan="0"
                      Aspect="AspectFill"/>
 
-              <Label x:Name ="labelPontuacao"
-                     Text="Pontuação"
-                     Grid.ColumnSpan="2"
-                     FontSize="20"
-                     HorizontalTextAlignment="Center"
-                     Grid.Row="1"/>
+              <Label x:Name="labelPontuacao"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       FontSize="15"
+                       BackgroundColor="#a7e0d8"
+                       TextColor="Black"/>
+                
+                <Label x:Name="labelNivel"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       FontSize="15"
+                       BackgroundColor="#a7e0d8"
+                       TextColor="Black"/>
 
-              <Label x:Name ="labelPergunta"
-                     Text="Pontuação"
-                     Grid.ColumnSpan="2"
-                     FontSize="20"
-                     HorizontalTextAlignment="Center"
-                     Grid.Row="2"/>
+                <Label x:Name="labelPergunta"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="3"
+                       FontSize="15"
+                       BackgroundColor="#FFCD75"
+                       TextColor="Black"/>
 
-              <Label x:Name ="labelnivel"
-                     Text="Nivel"
-                     Grid.Column ="3"
-                     FontSize="20"
-                     HorizontalTextAlignment="Center"
-                     Grid.Row="2"/>
 
-              <Button x:Name ="buttonrep1"
-                     Grid.ColumnSpan="3"
-                     Grid.Row="4"
-                     Margin="0,0,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="A)"/>
+                <Button x:Name="btResposta01"
+                        Clicked="Resposta1Clicked"
+                        BorderWidth="2"
+                        BackgroundColor="#000099"
+                        TextColor="White"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"/>
 
-              <Button x:Name ="buttonrep2"
-                     Grid.ColumnSpan="3"
-                     Grid.Row="5"
-                     Margin="0,0,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="B)"/>
+                <Button x:Name="btResposta02"
+                        Clicked="Resposta2Clicked"
+                        BorderWidth="2"
+                        BackgroundColor="#000099"
+                        TextColor="White"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"/>
 
-              <Button x:Name ="buttonrep3"
-                     Grid.ColumnSpan="3"
-                     Grid.Row="6"
-                     Margin="0,0,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="C)"/>
+                <Button x:Name="btResposta03"
+                        Clicked="Resposta3Clicked"
+                        BorderWidth="2"
+                        BackgroundColor="#000099"
+                        TextColor="White"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"/>
 
-              <Button x:Name ="buttonrep4"
-                     Grid.ColumnSpan="3"
-                     Grid.Row="7"
-                     Margin="0,0,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="D)"/>
+                <Button x:Name="btResposta04"
+                        Clicked="Resposta4Clicked"
+                        BorderWidth="2"
+                        BackgroundColor="#000099"
+                        TextColor="White"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"/>
 
-              <Button x:Name ="buttonrep5"
-                     Grid.ColumnSpan="3"
-                     Grid.Row="8"
-                     Margin="0,0,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="E)"/>
+                <Button x:Name="btResposta05"
+                        Clicked="Resposta5Clicked"
+                        BorderWidth="2"
+                        BackgroundColor="#000099"
+                        TextColor="White"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"/>
 
-              <Button
-                     Grid.Column="0"
-                     Grid.Row="9"
-                     Margin="5,2,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="E)"/>
 
-              <Button
-                     Grid.Column="1"
-                     Grid.Row="9"
-                     Margin="5,2,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="E)"/>
+                <Button Text="3 ERRADAS"
+                        Clicked="RetirarClicked"
+                        BorderWidth="2"
+                        Padding=".12"
+                        TextColor="Black"
+                        BackgroundColor="#a7e0d8"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="8"
+                        Grid.Column="0"/>
 
-              <Button
-                     Grid.Column="2"
-                     Grid.Row="9"
-                     Margin="5,2,0,5"
-                     BackgroundColor="#85cdf9"
-                     Text="E)"/>
+                <Button Text="PULAR"
+                        Clicked="PularClicked"
+                        BorderWidth="2"
+                        Padding=".12"
+                        TextColor="Black"
+                        BackgroundColor="#a7e0d8"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="8"
+                        Grid.Column="1"/>
+
+                <Button Text="+1 CHANCE"
+                        BorderWidth="2"
+                        Padding="12"
+                        TextColor="Black"
+                        BackgroundColor="#a7e0d8"
+                        Margin="0,0,0,10"
+                        FontSize="15"
+                        BorderColor="Black"
+                        Grid.Row="8"
+                        Grid.Column="2"/>
 
 
        </Grid>
