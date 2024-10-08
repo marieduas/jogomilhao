@@ -9,6 +9,7 @@ namespace jogomilhao
             InitializeComponent();
             gerenciador = new Gerenciador (labelPergunta, btResposta01, btResposta02, btResposta03, btResposta04, btResposta05, labelPontuacao, labelNivel);
         }
+        int pula = 0;
 
         private void Resposta1Clicked (object sender, EventArgs e)
         {
@@ -40,8 +41,15 @@ namespace jogomilhao
         }
         void PularClicked (object s, EventArgs e)
         {
-            gerenciador.ProximaQuestao();
-            (s as Button).IsVisible = false;
+
+                if (pula == 2)
+                (s as Button).IsVisible = false;
+                else 
+                {
+                     gerenciador.ProximaQuestao();
+                     pula++;
+                }
+                Pular.Text = "Pular"+(3-pula)+"x";
         }
     }
 }

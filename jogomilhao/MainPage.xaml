@@ -125,7 +125,8 @@
                         Grid.Row="8"
                         Grid.Column="0"/>
 
-                <Button Text="PULAR"
+                <Button x:Name="Pular"
+                        Text="Pular 3X"
                         Clicked="PularClicked"
                         BorderWidth="2"
                         Padding=".12"
